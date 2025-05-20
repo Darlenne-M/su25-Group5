@@ -14,10 +14,10 @@ Trotter is a simple, intuitive web app that makes it easy for pet owners to find
 
 ## App Functions
 1. Customer (the user with the customer role):
-    1. Create/modify customer profile - Register as a customer
-    2. View available services - Browse service options
-    3. Subscribe to available services - Sign up for services
-    4. Write reviews for subscribed services - Evaluate services
+    1. Create/modify customer profile - .
+    2. View available services - .
+    3. Subscribe to available services - .
+    4. Write reviews for subscribed services - .
 
 2. Provider (the user with the provider role):
     1. Create/modify/remove provider profile - register as service provider with business details, photos, service offerings, and pricing.
