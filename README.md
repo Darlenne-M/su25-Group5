@@ -46,7 +46,7 @@ Table of Contents
 ## 1. Introduction
 
 ### 1.1 Document Purpose
-Describe the purpose of the SRS and its intended audience.
+Trotter is a simple, intuitive web app that makes it easy for pet owners to find trusted care and services for their furry companions. 
 
 ### 1.2 Product Scope
 Identify the product whose software requirements are specified in this document, including the revision or release number. Explain what the product that is covered by this SRS will do, particularly if this SRS describes only part of the system or a single subsystem. 
