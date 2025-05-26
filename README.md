@@ -4,9 +4,9 @@
 ## For <project Trotter>
 
 Version 0.1  
-Prepared by <author>  
-<organization>  
-<date created> 
+Prepared by <Darlenne Noemi Mosqueda & Sarah Robinson>  
+<CSC 340>  
+<May 26, 2025> 
 
 Table of Contents
 =================
@@ -37,20 +37,21 @@ Table of Contents
     * 3.2.7 [Deadline](#327-deadline)
 
 ## Revision History
-| Name | Date    | Reason For Changes  | Version   |
-| ---- | ------- | ------------------- | --------- |
-|      |         |                     |           |
-|      |         |                     |           |
-|      |         |                     |           |
+|   Name   | Date    | Reason For Changes  | Version   |
+|   ----   | ------- | ------------------- | --------- |
+|Darlenne  | 5/26/25 |     Initial SRS     |   1.0     |
+|          |         |                     |           |
+|          |         |                     |           |
 
 ## 1. Introduction
 
 ### 1.1 Document Purpose
+The purpose of this Software Requirements Document (SRD) is to describe the client-view and developer-view requirements for the Trotter application.
 Trotter is a simple, intuitive web app that makes it easy for pet owners to find trusted care and services for their furry companions. 
 
 ### 1.2 Product Scope
-Identify the product whose software requirements are specified in this document, including the revision or release number. Explain what the product that is covered by this SRS will do, particularly if this SRS describes only part of the system or a single subsystem. 
-Provide a short description of the software being specified and its purpose, including relevant benefits, objectives, and goals. Relate the software to corporate goals or business strategies. If a separate vision and scope document is available, refer to it rather than duplicating its contents here.
+The purpose of the Trotter system is to make it easy for pet owners to find trusted care and services for their furry companions, while also providing a platform for service providers to easily list and manage their services. The system is based on a relational database with its pet-related service management and booking functions. We will have a database server supporting providers of different pet-related services.
+
 
 ### 1.3 Definitions, Acronyms and Abbreviations                                                                                                                                                                          |
 
