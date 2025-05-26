@@ -79,7 +79,7 @@ Trotter is a simple, intuitive web app that makes it easy for pet owners to find
 
 
 ### 2.1 Product Functions
- Service providers can use the platform to list and manage offerings that cater to pet owners' needs, while customers can easily discover and book the right care for their pets. A key feature of our website is real-time updates during service visits, enhancing transparency and peace of mind.
+ Service providers can use the platform to list and manage offerings that cater to pet owners' needs, while customers can easily discover and book the right care for their pets. A key feature of our website is real-time updates during service visits, if time allows, enhancing transparency and peace of mind.
 
 ### 2.2 Product Constraints
 The program requires a computer with Java JDK 21 installed to run. Due to a tight development timeline of four weeks, some features may need to be deprioritized or removed before the initial release. Since we are using Postgresql database to store the information, the system may struggle to support more users, more data, or more activity without performance issues or limitations.
@@ -91,21 +91,30 @@ Identify the various user classes that you anticipate will use this product. Use
 
 ## 3. Requirements
 
-### 3.1 Functional Requirements 
-This section specifies the software product's requirements. Specify all of the software requirements to a level of detail sufficient to enable designers to design a software system to satisfy those requirements, and to enable testers to test that the software system satisfies those requirements.
+### 3.1 Functional Requirements
+- FR0: The system will allow users to create accounts as either a provider or a client.
+  - Each account will have a unique identifier assigned at the time of creation.
+- FR1: The system will allow providers to create a new service by providing details including service title, price, brief description, location, cancellation policy, and availability.
+- FR2: The system will allow providers to view client statistics.
+- FR4: Provider's will have the authority to accept or deny any client bookings.
+- FR5: Users will be able to modify or remove their own profiles at any time.
+- FR6: The system will allow provider's to reply to clients reviews.
 
-The specific requirements should:
-* Be uniquely identifiable.
-* State the subject of the requirement (e.g., system, software, etc.) and what shall be done.
-* Optionally state the conditions and constraints, if any.
-* Describe every input (stimulus) into the software system, every output (response) from the software system, and all functions performed by the software system in response to an input or in support of an output.
-* Be verifiable (e.g., the requirement realization can be proven to the customer's satisfaction)
-* Conform to agreed upon syntax, keywords, and terms.
 
 #### 3.1.1 User interfaces
-Define the software components for which a user interface is needed. Describe the logical characteristics of each interface between the software product and the users. This may include sample screen images, any GUI standards or product family style guides that are to be followed, screen layout constraints, standard buttons and functions (e.g., help) that will appear on every screen, keyboard shortcuts, error message display standards, and so on. Details of the user interface design should be documented in a separate user interface specification.
+Web pages using HTML, CSS, and JavaScript.
 
-Could be further divided into Usability and Convenience requirements.
+1. Home Page
+- Navigation bar with links to "Browse Services", "Book Now", "About Us", and "Contact". Search bar for finding services by keyword or location.
+
+2. Service Listings Page
+- Displays available services. Each listing includes a title, price, provider name, brief description, and a "Book Now" button.
+
+3. Service Detail Page
+- Detailed information about the service. Provider profile, availability calendar, and user reviews. Option to select date/time and proceed with booking.
+
+4. Booking Interface
+- Form with input fields for service details, time, contact information. Confirmation screen before final submission.
 
 #### 3.1.2 Hardware interfaces
 Describe the logical and physical characteristics of each interface between the software product and the hardware components of the system. This may include the supported device types, the nature of the data and control interactions between the software and the hardware, and communication protocols to be used.
