@@ -4,7 +4,7 @@
 ## For Trotter
 
 Version 0.1  
-Prepared by Darlenne Noemi Mosqueda & Sarah Robinson  
+Prepared by Darlenne Noemi Mosqueda-Arredondo & Sarah Robinson  
 CSC 340  
 May 26, 2025 
 
@@ -46,11 +46,10 @@ Table of Contents
 ## 1. Introduction
 
 ### 1.1 Document Purpose
-The purpose of this Software Requirements Document (SRD) is to describe the client-view and developer-view requirements for the Trotter application.
+The purpose of this Software Requirements Document (SRD) is to describe the client-view and developer-view requirements for the Trotter application. This document outlines the functional and non-functional requirements, system constraints, interface descriptions, and other key technical details necessary for the design, development, and deployment of the application.
 
 ### 1.2 Product Scope
 The purpose of the Trotter system is to make it easy for pet owners to find trusted care and services for their furry companions, while also providing a platform for service providers to easily list and manage their services. The system is based on a relational database with its pet-related service management and booking functions. We will have a database server supporting providers of different pet-related services.
-
 
 ### 1.3 Definitions, Acronyms and Abbreviations |                                                                                                         
 | Reference         | Definition                          |
@@ -59,11 +58,11 @@ The purpose of the Trotter system is to make it easy for pet owners to find trus
 | Postgresql  | Open-source relational database management system.|
 | SpringBoot   | 	An open-source Java-based framework used to create a micro Service. This will be used to create and run our application.             |
 | Spring MVC           | Model-View-Controller. This is the architectural pattern that will be used to implement our system. 
-| Spring Web           | Will be used to build our web application by using Spring MVC. This is one of the dependencies of our system. feedback             |            |
+| Spring Web           | Will be used to build our web application by using Spring MVC. This is one of the dependencies of our system.             |            |
 | API    | Application Programming Interface. This will be used to interface the backend and the fronted of our application.              |
 | HTML           | 	Hypertext Markup Language. This is the code that will be used to structure and design the web application and its content.             |
 | CSS   | Cascading Style Sheets. Will be used to add styles and appearance to the web app.              |
-| JavaScript          | An object-oriented computer programming language commonly used to create interactive effects within web browsers.Will be used in conjuction with HTML and CSS to make the web app. feedback             |
+| JavaScript          | An object-oriented computer programming language commonly used to create interactive effects within web browsers.Will be used in conjuction with HTML and CSS to make the web app.            |
 | VS Code    |  An integrated development environment (IDE) for Java. This is where our system will be created.             |
 
 ### 1.4 References
@@ -75,11 +74,10 @@ https://getbootstrap.com/
 Section 1 is a general introduction to the document, intended for any readers. Section 2 is focused on the product and its features. This section is for customers and business stakeholders. Section 3 specifies the requirements and constraints for the product and development process. This section is intended for all stakeholders, especially the development team.
 
 ## 2. Product Overview
-Trotter is a simple, intuitive web app that makes it easy for pet owners to find trusted care and services for their furry companions. Providers and customers make use of the centralized platform to meet their needs. Providers create and publish pet-related services, customers sign up for any available services that they want to book. 
-
+Trotter is a simple, intuitive web app that makes it easy for pet owners to find trusted care and services for their furry companions. Providers and customers make use of the centralized platform to meet their needs. Providers create and publish pet-related services, customers sign up for any available services that they are interested in. Trotter supports two main user roles: customers (pet owners) and providers (service businesses or individuals offering pet care). The system enables customers to register, browse available services, make bookings, and leave reviews. At the same time, providers can create and manage service listings, respond to reviews, and monitor customer activity and performance analytics.
 
 ### 2.1 Product Functions
- Service providers can use the platform to list and manage offerings that cater to pet owners' needs, while customers can easily discover and book the right care for their pets. A key feature of our website is real-time updates during service visits, if time allows, enhancing transparency and peace of mind.
+ Service providers can use the platform to list and manage services that cater to pet owners' needs, while customers can easily discover and book the right care for their pets. A key feature of our website is real-time updates during service visits, if time allows, enhancing transparency and peace of mind.
 
 ### 2.2 Product Constraints
 The program requires a computer with Java JDK 21 installed to run. Due to a tight development timeline of four weeks, some features may need to be deprioritized or removed before the initial release. Since we are using Postgresql database to store the information, the system may struggle to support more users, more data, or more activity without performance issues or limitations.
