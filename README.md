@@ -87,8 +87,6 @@ The program requires a computer with Java JDK 21 installed to run. Due to a tigh
 ### 2.3 User Characteristics
 Our web application is designed to be intuitive and user-friendly, requiring no prior computer knowledge beyond basic web browsing skills. As long as users know the services they're looking for, they can quickly become proficient with the platform after just a few uses.
 
-Identify the various user classes that you anticipate will use this product. User classes may be differentiated based on frequency of use, subset of product functions used, technical expertise, security or privilege levels, educational level, or experience. Describe the pertinent characteristics of each user class. Certain requirements may pertain only to certain user classes. Distinguish the most important user classes for this product from those who are less important to satisfy.
-
 ## 3. Requirements
 
 ### 3.1 Functional Requirements
@@ -117,8 +115,10 @@ Web pages using HTML, CSS, and JavaScript.
 - Form with input fields for service details, time, contact information. Confirmation screen before final submission.
 
 #### 3.1.2 Hardware interfaces
-Describe the logical and physical characteristics of each interface between the software product and the hardware components of the system. This may include the supported device types, the nature of the data and control interactions between the software and the hardware, and communication protocols to be used.
+Devices that have web browser capabilities.
 
 #### 3.1.3 Software interfaces
-Describe the connections between this product and other specific software components (name and version), including databases, operating systems, tools, libraries, and integrated commercial components. Identify the data items or messages coming into the system and going out and describe the purpose of each. Describe the services needed and the nature of communications. Refer to documents that describe detailed application programming interface protocols. Identify data that will be shared across software components. If the data sharing mechanism must be implemented in a specific way (for example, use of a global data area in a multitasking operating system), specify this as an implementation constraint.
+- Java jdk 21
+- PostgreSQL 17
+- SpringBoot 3.4.5
 
