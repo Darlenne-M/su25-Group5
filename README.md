@@ -75,20 +75,18 @@ https://getbootstrap.com/
 Section 1 is a general introduction to the document, intended for any readers. Section 2 is focused on the product and its features. This section is for customers and business stakeholders. Section 3 specifies the requirements and constraints for the product and development process. This section is intended for all stakeholders, especially the development team.
 
 ## 2. Product Overview
-This section should describe the general factors that affect the product and its requirements. This section does not state specific requirements. Instead, it provides a background for those requirements, which are defined in detail in Section 3, and makes them easier to understand.
+Trotter is a simple, intuitive web app that makes it easy for pet owners to find trusted care and services for their furry companions. Providers and customers make use of the centralized platform to meet their needs. Providers create and publish pet-related services, customers sign up for any available services that they want to book. 
+
 
 ### 2.1 Product Functions
-Summarize the major functions the product must perform or must let the user perform. Details will be provided in Section 3, so only a high level summary (such as a bullet list) is needed here. Organize the functions to make them understandable to any reader of the SRS. A picture of the major groups of related requirements and how they relate, such as a top level data flow diagram or object class diagram, is often effective.
+ Service providers can use the platform to list and manage offerings that cater to pet owners' needs, while customers can easily discover and book the right care for their pets. A key feature of our website is real-time updates during service visits, enhancing transparency and peace of mind.
 
 ### 2.2 Product Constraints
-This subsection should provide a general description of any other items that will limit the developer’s options. These may include:  
-
-* Interfaces to users, other applications or hardware.  
-* Quality of service constraints.  
-* Standards compliance.  
-* Constraints around design or implementation.
+The program requires a computer with Java JDK 21 installed to run. Due to a tight development timeline of four weeks, some features may need to be deprioritized or removed before the initial release. Since we are using Postgresql database to store the information, the system may struggle to support more users, more data, or more activity without performance issues or limitations.
   
 ### 2.3 User Characteristics
+Our web application is designed to be intuitive and user-friendly, requiring no prior computer knowledge beyond basic web browsing skills. As long as users know the services they're looking for, they can quickly become proficient with the platform after just a few uses.
+
 Identify the various user classes that you anticipate will use this product. User classes may be differentiated based on frequency of use, subset of product functions used, technical expertise, security or privilege levels, educational level, or experience. Describe the pertinent characteristics of each user class. Certain requirements may pertain only to certain user classes. Distinguish the most important user classes for this product from those who are less important to satisfy.
 
 ## 3. Requirements
