@@ -1,12 +1,12 @@
 # su25-Group5
 
 # Software Requirements Specification
-## For <project Trotter>
+## For Trotter
 
 Version 0.1  
-Prepared by <Darlenne Noemi Mosqueda & Sarah Robinson>  
-<CSC 340>  
-<May 26, 2025> 
+Prepared by Darlenne Noemi Mosqueda & Sarah Robinson  
+CSC 340  
+May 26, 2025 
 
 Table of Contents
 =================
@@ -47,19 +47,32 @@ Table of Contents
 
 ### 1.1 Document Purpose
 The purpose of this Software Requirements Document (SRD) is to describe the client-view and developer-view requirements for the Trotter application.
-Trotter is a simple, intuitive web app that makes it easy for pet owners to find trusted care and services for their furry companions. 
 
 ### 1.2 Product Scope
 The purpose of the Trotter system is to make it easy for pet owners to find trusted care and services for their furry companions, while also providing a platform for service providers to easily list and manage their services. The system is based on a relational database with its pet-related service management and booking functions. We will have a database server supporting providers of different pet-related services.
 
 
-### 1.3 Definitions, Acronyms and Abbreviations                                                                                                                                                                          |
+### 1.3 Definitions, Acronyms and Abbreviations |                                                                                                         
+| Reference         | Definition                          |
+|-------------------|--------------------------------------|
+| Java              | A programming language originally developed by James Gosling at Sun Microsystems. We will be using this language to build Trotter.   |
+| Postgresql  | Open-source relational database management system.|
+| SpringBoot   | 	An open-source Java-based framework used to create a micro Service. This will be used to create and run our application.             |
+| Spring MVC           | Model-View-Controller. This is the architectural pattern that will be used to implement our system. 
+| Spring Web           | Will be used to build our web application by using Spring MVC. This is one of the dependencies of our system. feedback             |            |
+| API    | Application Programming Interface. This will be used to interface the backend and the fronted of our application.              |
+| HTML           | 	Hypertext Markup Language. This is the code that will be used to structure and design the web application and its content.             |
+| CSS   | Cascading Style Sheets. Will be used to add styles and appearance to the web app.              |
+| JavaScript          | An object-oriented computer programming language commonly used to create interactive effects within web browsers.Will be used in conjuction with HTML and CSS to make the web app. feedback             |
+| VS Code    |  An integrated development environment (IDE) for Java. This is where our system will be created.             |
 
 ### 1.4 References
-List any other documents or Web addresses to which this SRS refers. These may include user interface style guides, contracts, standards, system requirements specifications, use case documents, or a vision and scope document. Provide enough information so that the reader could access a copy of each reference, including title, author, version number, date, and source or location.
+https://spring.io/guides
+
+https://getbootstrap.com/
 
 ### 1.5 Document Overview
-Describe what the rest of the document contains and how it is organized.
+Section 1 is a general introduction to the document, intended for any readers. Section 2 is focused on the product and its features. This section is for customers and business stakeholders. Section 3 specifies the requirements and constraints for the product and development process. This section is intended for all stakeholders, especially the development team.
 
 ## 2. Product Overview
 This section should describe the general factors that affect the product and its requirements. This section does not state specific requirements. Instead, it provides a background for those requirements, which are defined in detail in Section 3, and makes them easier to understand.
