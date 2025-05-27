@@ -85,38 +85,87 @@ The program requires a computer with Java JDK 21 installed to run. Due to a tigh
 ### 2.3 User Characteristics
 Our web application is designed to be intuitive and user-friendly, requiring no prior computer knowledge beyond basic web browsing skills. As long as users know the services they're looking for, they can quickly become proficient with the platform after just a few uses.
 
-## 3. Requirements
+### 2.4 Assumptions and Dependencies
 
-### 3.1 Functional Requirements
-- FR0: The system will allow users to create accounts as either a provider or a client.
-  - Each account will have a unique identifier assigned at the time of creation.
-- FR1: The system will allow providers to create a new service by providing details including service title, price, brief description, location, cancellation policy, and availability.
-- FR2: The system will allow providers to view client statistics.
-- FR4: Provider's will have the authority to accept or deny any client bookings.
-- FR5: Providers will be able to modify or remove their own profiles at any time.
-- FR6: The system will allow provider's to reply to clients reviews.
+Assumptions
 
+- The system will be running on a Windows Server and using Java.
 
-#### 3.1.1 User interfaces
-Web pages using HTML, CSS, and JavaScript.
+- This application will have a connection with PostgrelSQL database
 
-1. Home Page
-- Navigation bar with links to "Browse Services", "Book Now", "About Us", and "Contact". Search bar for finding services by keyword or location.
+- The User Interface will be displayed in English.
 
-2. Service Listings Page
-- Displays available services. Each listing includes a title, price, provider name, brief description, and a "Book Now" button.
+Dependencies
 
-3. Service Detail Page
-- Detailed information about the service. Provider profile, availability calendar, and user reviews. Option to select date/time and proceed with booking.
+- Spring & SpringBoot, and RestAPI to connect with other external APIs
 
-4. Booking Interface
-- Form with input fields for service details, time, contact information. Confirmation screen before final submission.
+- VS Code is used for development
 
-#### 3.1.2 Hardware interfaces
-Devices that have web browser capabilities.
+- Some external API's that may be used are (Wag!, Rover, dog tracking app, auto scheduling, weather, chat/video updates, payment (PayPal, Stripe))
 
-#### 3.1.3 Software interfaces
+### 3. Requirements
+
+3.1 Functional Requirements
+
+- FR0: Trotter will allow users to create accounts as either a customer or a provider.
+     - Every account will have a unique identifier assigned to it when created
+- FR1: Trotter will allow providers to create a new listing by providing details such as walking availability, location, services offered, and experience/certifications.
+- FR2: Trotter will allow customers to browse through a list of available services and providers.
+- FR3: Trotter will allow customers to sign up for services offered through providers of their choosing and customer is logged in the booking database.
+- FR4: Providers will have the ability to ban or deactivate customers from their booking if the contract/policy is broken.
+- FR5: Providers will have access to modify their profiles at their discretion.
+- FR6: Customers will be able to review the services after the booking is complete.
+- FR7: Providers will be able to react and communicate with customers' views/photos/etc.
+
+3.1.1 User Interfaces
+
+- Trotter UI connects web pages with HTML, CSS, and JavaScript.
+
+3.1.2 Hardware Interfaces
+
+- Connect with devices that are compatible with a web browser
+
+3.1.3 Software Interfaces
+
 - Java jdk 21
-- PostgreSQL 17
+- PostgrelSQL 17
 - SpringBoot 3.4.5
 
+### 3.2 Non-Functional Requirements
+
+3.2.1 Performance
+
+- NFR0: Service filter for bookings must complete in ~3 seconds.
+- NFR1: The UI must be intuitive and accessible for all users.
+- NFR2: The system will consume under 200MB of memory
+
+3.2.2 Security
+
+- NFR3: Trotter will use the username and passwords to ensure only authorized users may log in
+
+3.2.3 Reliability
+
+- Trotter will have exceptional management functionality, ensuring reliable walk scheduling, minimizing timing conflicts, and missed details during animal visits. Walk information is accessible consistently for real-time updates.
+
+3.2.4 Availability
+
+- NFR4: Trotter will be available 24/7. Routine Maintenance will be scheduled during low traffic hours to ensure the least amount of service disruption for users.
+
+3.2.5 Compliance
+
+- Licensing/Permits- Tracking and management for the required permits/licensing, general business license, dog walking permits
+- Client Contract/Policy- Templates for agreements/terms, Stores signed contracts. Helps ensure clear communication/conditions
+- Data Privacy- Protect sensitive animal/client data
+- Insurance Requirements- Tracking of insurance policies
+- Animal Laws/Regulations- Ensure proper care and laws are followed
+- Emergency Protocols
+- Safety/Sanitation Regulations
+- Tax Requirements
+
+3.2.6 Cost
+
+- Although time and skill are needed, there's no cost for this project.
+
+3.2.7 Deadline
+
+- The final application presentation is due on June 18th.
