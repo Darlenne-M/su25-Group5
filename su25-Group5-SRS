@@ -1,0 +1,84 @@
+### 2.4 Assumptions and Dependencies
+
+Assumptions
+
+- The system will be running on a Windows Server and using Java.
+
+- This application will have a connection with PostgrelSQL database
+
+- The User Interface will be displayed in English.
+
+Dependencies
+
+- Spring & SpringBoot, and RestAPI to connect with other external APIs
+
+- VS Code is used for development
+
+- Some external API's that may be used are (Wag!, Rover, dog tracking app, auto scheduling, weather, chat/video updates, payment (PayPal, Stripe))
+
+### 3. Requirements
+
+3.1 Functional Requirements
+
+- FR0: Trotter will allow users to create accounts as either a customer or a provider.
+     - Every account will have a unique identifier assigned to it when created
+- FR1: Trotter will allow providers to create a new listing by providing details such as walking availability, location, services offered, and experience/certifications.
+- FR2: Trotter will allow customers to browse through a list of available services and providers.
+- FR3: Trotter will allow customers to sign up for services offered through providers of their choosing and customer is logged in the booking database.
+- FR4: Providers will have the ability to ban or deactivate customers from their booking if the contract/policy is broken.
+- FR5: Providers will have access to modify their profiles at their discretion.
+- FR6: Customers will be able to review the services after the booking is complete.
+- FR7: Providers will be able to react and communicate with customers' views/photos/etc.
+
+3.1.1 User Interfaces
+
+- Trotter UI connects web pages with HTML, CSS, and JavaScript.
+
+3.1.2 Hardware Interfaces
+
+- Connect with devices that are compatible with a web browser
+
+3.1.3 Software Interfaces
+
+- Java jdk 21
+- PostgrelSQL 17
+- SpringBoot 3.4.5
+
+### 3.2 Non-Functional Requirements
+
+3.2.1 Performance
+
+- NFR0: Service filter for bookings must complete in ~3 seconds.
+- NFR1: The UI must be intuitive and accessible for all users.
+- NFR2: The system will consume under 200MB of memory
+
+3.2.2 Security
+
+- NFR3: Trotter will use the username and passwords to ensure only authorized users may log in
+
+3.2.3 Reliability
+
+- Trotter will have exceptional management functionality, ensuring reliable walk scheduling, minimizing timing conflicts, and missed details during animal visits. Walk information is accessible consistently for real-time updates.
+
+3.2.4 Availability
+
+- NFR4: Trotter will be available 24/7. Routine Maintenance will be scheduled during low traffic hours to ensure the least amount of service disruption for users.
+
+3.2.5 Compliance
+
+- Licensing/Permits- Tracking and management for the required permits/licensing, general business license, dog walking permits
+- Client Contract/Policy- Templates for agreements/terms, Stores signed contracts. Helps ensure clear communication/conditions
+- Data Privacy- Protect sensitive animal/client data
+- Insurance Requirements- Tracking of insurance policies
+- Animal Laws/Regulations- Ensure proper care and laws are followed
+- Emergency Protocols
+- Safety/Sanitation Regulations
+- Tax Requirements
+
+3.2.6 Cost
+
+- Although time and skill are needed, there's no cost for this project.
+
+3.2.7 Deadline
+
+- The final application presentation is due on June 18th.
