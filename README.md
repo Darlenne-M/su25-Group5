@@ -109,18 +109,16 @@ Dependencies
 
 - FR0: Trotter will allow users to create accounts as either a customer or a provider.
      - Every account will have a unique identifier assigned to it when created
-- FR1: Trotter will allow providers to create a new listing by providing details such as walking availability, location, services offered, and experience/certifications.
-- FR2: Trotter will allow customers to browse through a list of available services and providers.
-- FR3: Trotter will allow customers to sign up for services offered through providers of their choosing and customer is logged in the booking database.
-- FR4: Providers will have the ability to ban or deactivate customers from their booking if the contract/policy is broken.
-- FR5: Providers will have access to modify their profiles at their discretion.
-- FR6: Customers will be able to review the services after the booking is complete.
-- FR7: Providers will be able to react and communicate with customers' views/photos/etc.
-- FR8: The system will allow providers to create a new service by providing details including service title, price, brief description, location, cancellation policy, and availability.
-- FR9: The system will allow providers to view client statistics.
-- FR10: Provider's will have the authority to accept or deny any client bookings.
-- FR11: Providers will be able to modify or remove their own profiles at any time.
-- FR12: The system will allow provider's to reply to clients reviews.
+- FR1: Trotter will allow customers to browse through a list of available services and providers.
+- FR2: Trotter will allow customers to sign up for services offered through providers of their choosing and customer is logged in the booking database.
+- FR3: Providers will have the ability to ban or deactivate customers from their booking if the contract/policy is broken.
+- FR4: Customers will be able to review the services after the booking is complete.
+- FR5: Providers will be able to react and communicate with customers' views/photos/etc.
+- FR6: The system will allow providers to create a new service by providing details including service title, experience/certifications, walking availability, price, brief  description, location, cancellation policy, and availability.
+- FR7: The system will allow providers to view client statistics.
+- FR8: Provider's will have the authority to accept or deny any client bookings.
+- FR9: Providers will be able to modify or remove their own profiles at any time.
+- FR10: The system will allow provider's to reply to clients reviews.
   
 3.1.1 User Interfaces
 
