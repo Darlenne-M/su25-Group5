@@ -116,7 +116,12 @@ Dependencies
 - FR5: Providers will have access to modify their profiles at their discretion.
 - FR6: Customers will be able to review the services after the booking is complete.
 - FR7: Providers will be able to react and communicate with customers' views/photos/etc.
-
+- FR8: The system will allow providers to create a new service by providing details including service title, price, brief description, location, cancellation policy, and availability.
+- FR9: The system will allow providers to view client statistics.
+- FR10: Provider's will have the authority to accept or deny any client bookings.
+- FR11: Providers will be able to modify or remove their own profiles at any time.
+- FR12: The system will allow provider's to reply to clients reviews.
+  
 3.1.1 User Interfaces
 
 - Trotter UI connects web pages with HTML, CSS, and JavaScript.
