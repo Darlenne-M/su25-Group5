@@ -39,26 +39,28 @@
                             Account
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end"> <!-- Aligns dropdown to the right -->
-                            <li><a class="dropdown-item" href="#">Log In</a></li>
-                            <li><a class="dropdown-item" href="../homepage.html#Home">Sign Up</a></li>
+                             <li><a class="dropdown-item" href="provider-create-service.html">Create
+                                    Service</a></li>
+                            <li><a class="dropdown-item" href="provider-cust-stats.html">Customer Statistics</a></li>
+                             <li><a class="dropdown-item" href="provider-reply-reviews.html">Reviews</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="provider-profile.html">My Profile</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
         </div>
     </nav><br>
-    
+
     <div class="Home text-center">
         <h4>Create Your Service Below</h4>
     </div>
     <div class="container mt-5" style="max-width: 600px;">
 
         <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">Service Title(Optional)</label>
+            <label for="formGroupExampleInput" class="form-label">Service Title (Optional)</label>
             <input type="text" class="form-control" id="formGroupExampleInput"
                 placeholder="e.g. Dog Walking in Greensboro">
         </div>
@@ -187,6 +189,10 @@
                 <label for="travelRadius" class="form-label">Travel Radius</label>
                 <input type="text" class="form-control" id="travelRadius" name="travel_radius"
                     placeholder="How far you're willing to travel to provide your service">
+            </div>
+            <div class="mb-3">
+                <label for="formFileMultiple" class="form-label">Upload Any Relevant Images (Optional)</label>
+                <input class="form-control" type="file" id="formFileMultiple" multiple>
             </div>
         </div>
         <div class="Home text-center">

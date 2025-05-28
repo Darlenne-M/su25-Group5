@@ -18,7 +18,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(255, 123, 0);">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Trotter</a>
+            <a class="navbar-brand" href="#"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -42,10 +42,6 @@
                         <ul class="dropdown-menu dropdown-menu-end"> <!-- Aligns dropdown to the right -->
                             <li><a class="dropdown-item" href="#">Log In</a></li>
                             <li><a class="dropdown-item" href="#Home">Sign Up</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -54,19 +50,96 @@
         </div>
     </nav>
 
-
-    <div class="Home text-center">
-          <h5 class="text-center mb-4">Sign Up As</h5>
-          <a href="provider-prototype/provider-sign-up.html">
-    <button class="btn btn-primary" style="background-color: rgb(255, 123, 0); border-color: orange;">Provider</button>
-  </a>
-  <a href="client-sign-up.html">
-    <button class="btn btn-primary" style="background-color: rgb(255, 123, 0); border-color: orange;">Client</button>
-  </a>
+    <div id="Trotter" class="Home text-center" style="background-color: rgb(255, 123, 0);">
+        <br><br><br>
+        <h1 style="font-size: 3rem; font-weight: bold; color: white;">Trotter</h1>
+        <h6 style="color: white;">Dedicated to providing exceptional pet care</h6>
+        <div class="container mt-5 d-flex justify-content-center">
+            <div class="mb-3" style="width: 400px;">
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Email Address">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary"
+                    style="background-color: rgb(255, 98, 0); border-color: rgb(255, 98, 0);">
+                    Subscribe
+                </button>
+            </div>
+        </div><br><br><br><br><br><br>
     </div>
-<br>
-<br>
-    <div id="contact-us" class="container">
+   
+    </div>
+
+    <div class="container bg-light" style="max-width: 1380px;">
+        <br><br>   <br><br>
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="images/homepage.jpg" class="img-fluid rounded-start" alt="Customer photo">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">About</h5><br>
+                    <p class="card-text">Trotter is a platform dedicated to connecting local service providers with
+                        clients across North Carolina. Whether you're looking for reliable pet groomers, home repair
+                        specialists, or wellness professionals, Trotter helps you find and book trusted providers in
+                        your city with ease.
+                        <br>
+                        We’re focused on simplicity, transparency, and community — giving both clients and providers the
+                        tools they need to thrive. Providers can showcase their services, manage reviews, and grow their
+                        customer base, while clients can explore options, read verified reviews, and book with
+                        confidence.
+                        <br>
+                        At Trotter, we believe in making local service access seamless, personal, and dependable —
+                        because the best services shouldn’t be hard to find.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="Home text-center">
+             <br>
+            <h6 class="mt-4">Our Mission</h6>
+            <p>To empower small businesses and simplify access to trusted local services across North Carolina — one
+                connection at a time.</p>
+            <div class="row mt-4 text-center">
+                <div class="col">
+                    <h3>500+</h3>
+                    <p>Trusted Providers</p>
+                </div>
+                <div class="col">
+                    <h3>1,200+</h3>
+                    <p>Services Booked</p>
+                </div>
+                <div class="col">
+                    <h3>98%</h3>
+                    <p>Satisfaction Rate</p>
+                </div>
+            </div>
+            <br>
+        </div>
+
+    </div><br><br><br><br>
+
+<div id="Home" class="Home d-flex justify-content-center align-items-center text-center" style="min-height: 60vh;">
+  <div class="card p-5 shadow-lg" style="border: none; max-width: 400px;">
+    <h2 class="mb-4" >Sign Up As</h2>
+    <div class="d-grid gap-3">
+      <a href="provider-prototype/provider-sign-up.html" class="btn btn-lg btn-primary"
+         style="background-color: rgb(255, 123, 0); border-color: orange;">
+        👩‍🔧 Provider
+      </a>
+      <a href="client-sign-up.html" class="btn btn-lg btn-primary"
+         style="background-color: rgb(255, 123, 0); border-color: orange;">
+        🛍️ Client
+      </a>
+    </div>
+  </div></div><br><br>
+
+
+    <br>
+    <br>
+    <div id="contact-us" class="container bg-light">
+        <br><br><br><br>
         <h1 class="text-center mb-4">CONTACT</h1><br>
         <div class="row">
 
@@ -97,6 +170,7 @@
                         Send
                     </button>
                 </form>
+                 <br><br><br><br>
             </div>
         </div>
 
