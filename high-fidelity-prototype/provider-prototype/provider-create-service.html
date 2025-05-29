@@ -25,13 +25,16 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../homepage.html">Home</a>
+                        <a class="nav-link active" aria-current="page" href="provider-homepage.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Services Available</a>
+                        <a class="nav-link" href="provider-create-service.html">Create Service</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../homepage.html#contact-us">Contact Us</a>
+                        <a class="nav-link" href="provider-reply-reviews.html">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="provider-homepage.html#contact-us">Contact Us</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -39,168 +42,174 @@
                             Account
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end"> <!-- Aligns dropdown to the right -->
-                             <li><a class="dropdown-item" href="provider-create-service.html">Create
-                                    Service</a></li>
-                            <li><a class="dropdown-item" href="provider-cust-stats.html">Customer Statistics</a></li>
-                             <li><a class="dropdown-item" href="provider-reply-reviews.html">Reviews</a></li>
+                            <li><a class="dropdown-item" href="provider-profile.html">My Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="provider-profile.html">My Profile</a></li>
+                            <li><a class="dropdown-item" href="../homepage.html">Log Out</a></li>
+
                         </ul>
                     </li>
                 </ul>
+
             </div>
         </div>
     </nav><br>
-
-    <div class="Home text-center">
-        <h4>Create Your Service Below</h4>
-    </div>
-    <div class="container mt-5" style="max-width: 600px;">
-
-        <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">Service Title (Optional)</label>
-            <input type="text" class="form-control" id="formGroupExampleInput"
-                placeholder="e.g. Dog Walking in Greensboro">
-        </div>
-        <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">Type of Service</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2"
-                placeholder="e.g. dog walking or dog sitting">
-        </div>
-        <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Full Description of Service</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <label for="experience" class="form-label">Experience</label>
-                <input type="text" class="form-control" id="experience" name="experience"
-                    placeholder="e.g. 3 years, Certified Trainer">
-            </div>
-            <div class="col mb-3">
-                <label for="pricing" class="form-label">Pricing</label>
-                <input type="text" class="form-control" id="pricing" name="pricing"
-                    placeholder="e.g. $25/hour or Flat rate">
-            </div>
-            <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Availability</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkDefault">
-                    <label class="form-check-label" for="checkDefault">
-                        Monday
-                    </label>
+    <div class="d-flex justify-content-center">
+        <div class="card w-75 mb-3">
+            <div class="card-header">
+                <div class="Home text-center">
+                    <h4>Create Your Service Below</h4>
                 </div>
             </div>
-            <div class="col-4">
-                <input type="time" class="form-control" id="mondayFrom" name="availability[monday][from]">
-            </div>
-            <div class="col-4">
-                <input type="time" class="form-control" id="mondayTo" name="availability[monday][to]">
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="checkDefault">
-                <label class="form-check-label" for="checkDefault">
-                    Tuesday
-                </label>
-            </div>
-            <div class="col-4">
-                <input type="time" class="form-control" id="tuesdayFrom" name="availability[tuesday][from]">
-            </div>
-            <div class="col-4">
-                <input type="time" class="form-control" id="tuesdayTo" name="availability[tuesday][to]">
-            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Service Title (Optional)</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput"
+                        placeholder="e.g. Dog Walking in Greensboro">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Type of Service</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2"
+                        placeholder="e.g. dog walking or dog sitting">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Full Description of Service</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
 
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="checkDefault">
-                <label class="form-check-label" for="checkDefault">
-                    Wednesday
-                </label>
-            </div>
-            <div class="col-4">
-                <input type="time" class="form-control" id="wednesdayFrom" name="availability[wednesday][from]">
-            </div>
-            <div class="col-4">
-                <input type="time" class="form-control" id="wednesdayTo" name="availability[wednesday][to]">
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="checkChecked">
-                <label class="form-check-label" for="checkChecked">
-                    Thursday
-                </label>
-            </div>
-            <div class="col-4">
-                <input type="time" class="form-control" id="thursdayFrom" name="availability[thursday][from]">
-            </div>
-            <div class="col-4">
-                <input type="time" class="form-control" id="thursdayTo" name="availability[thursday][to]">
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="checkChecked">
-                <label class="form-check-label" for="checkChecked">
-                    Friday
-                </label>
-            </div>
-            <div class="col-4">
-                <input type="time" class="form-control" id="fridayFrom" name="availability[friday][from]">
-            </div>
-            <div class="col-4">
-                <input type="time" class="form-control" id="fridayTo" name="availability[friday][to]">
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="checkChecked">
-                <label class="form-check-label" for="checkChecked">
-                    Saturday
-                </label>
-            </div>
-            <div class="col-4">
-                <input type="time" class="form-control" id="saturdayFrom" name="availability[saturday][from]">
-            </div>
-            <div class="col-4">
-                <input type="time" class="form-control" id="saturdayTo" name="availability[saturday][to]">
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="checkChecked">
-                <label class="form-check-label" for="checkChecked">
-                    Sunday
-                </label>
-            </div>
-            <div class="col-4">
-                <input type="time" class="form-control" id="sundayFrom" name="availability[sunday][from]">
-            </div>
-            <div class="col-4">
-                <input type="time" class="form-control" id="sundayTo" name="availability[sunday][to]">
-            </div>
-        </div>
-        <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">Perferred Contant Method</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="e.g. mobile or email">
-        </div>
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="serviceLocation" class="form-label">Service Location(s)</label>
-                <input type="text" class="form-control" id="serviceLocation" name="service_location"
-                    placeholder="Enter cities or zip codes">
-            </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="experience" class="form-label">Experience</label>
+                        <input type="text" class="form-control" id="experience" name="experience"
+                            placeholder="e.g. 3 years, Certified Trainer">
+                    </div>
+                    <div class="col mb-3">
+                        <label for="pricing" class="form-label">Pricing</label>
+                        <input type="text" class="form-control" id="pricing" name="pricing"
+                            placeholder="e.g. $25/hour or Flat rate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">Availability</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="checkDefault">
+                            <label class="form-check-label" for="checkDefault">
+                                Monday
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <input type="time" class="form-control" id="mondayFrom" name="availability[monday][from]">
+                    </div>
+                    <div class="col-4">
+                        <input type="time" class="form-control" id="mondayTo" name="availability[monday][to]">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="checkDefault">
+                        <label class="form-check-label" for="checkDefault">
+                            Tuesday
+                        </label>
+                    </div>
+                    <div class="col-4">
+                        <input type="time" class="form-control" id="tuesdayFrom" name="availability[tuesday][from]">
+                    </div>
+                    <div class="col-4">
+                        <input type="time" class="form-control" id="tuesdayTo" name="availability[tuesday][to]">
+                    </div>
 
-            <div class="col-md-6 mb-3">
-                <label for="travelRadius" class="form-label">Travel Radius</label>
-                <input type="text" class="form-control" id="travelRadius" name="travel_radius"
-                    placeholder="How far you're willing to travel to provide your service">
-            </div>
-            <div class="mb-3">
-                <label for="formFileMultiple" class="form-label">Upload Any Relevant Images (Optional)</label>
-                <input class="form-control" type="file" id="formFileMultiple" multiple>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="checkDefault">
+                        <label class="form-check-label" for="checkDefault">
+                            Wednesday
+                        </label>
+                    </div>
+                    <div class="col-4">
+                        <input type="time" class="form-control" id="wednesdayFrom" name="availability[wednesday][from]">
+                    </div>
+                    <div class="col-4">
+                        <input type="time" class="form-control" id="wednesdayTo" name="availability[wednesday][to]">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="checkChecked">
+                        <label class="form-check-label" for="checkChecked">
+                            Thursday
+                        </label>
+                    </div>
+                    <div class="col-4">
+                        <input type="time" class="form-control" id="thursdayFrom" name="availability[thursday][from]">
+                    </div>
+                    <div class="col-4">
+                        <input type="time" class="form-control" id="thursdayTo" name="availability[thursday][to]">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="checkChecked">
+                        <label class="form-check-label" for="checkChecked">
+                            Friday
+                        </label>
+                    </div>
+                    <div class="col-4">
+                        <input type="time" class="form-control" id="fridayFrom" name="availability[friday][from]">
+                    </div>
+                    <div class="col-4">
+                        <input type="time" class="form-control" id="fridayTo" name="availability[friday][to]">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="checkChecked">
+                        <label class="form-check-label" for="checkChecked">
+                            Saturday
+                        </label>
+                    </div>
+                    <div class="col-4">
+                        <input type="time" class="form-control" id="saturdayFrom" name="availability[saturday][from]">
+                    </div>
+                    <div class="col-4">
+                        <input type="time" class="form-control" id="saturdayTo" name="availability[saturday][to]">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="checkChecked">
+                        <label class="form-check-label" for="checkChecked">
+                            Sunday
+                        </label>
+                    </div>
+                    <div class="col-4">
+                        <input type="time" class="form-control" id="sundayFrom" name="availability[sunday][from]">
+                    </div>
+                    <div class="col-4">
+                        <input type="time" class="form-control" id="sundayTo" name="availability[sunday][to]">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Perferred Contant Method</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2"
+                        placeholder="e.g. mobile or email">
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="serviceLocation" class="form-label">Service Location(s)</label>
+                        <input type="text" class="form-control" id="serviceLocation" name="service_location"
+                            placeholder="Enter cities or zip codes">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="travelRadius" class="form-label">Travel Radius</label>
+                        <input type="text" class="form-control" id="travelRadius" name="travel_radius"
+                            placeholder="How far you're willing to travel to provide your service">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFileMultiple" class="form-label">Upload Any Relevant Images (Optional)</label>
+                        <input class="form-control" type="file" id="formFileMultiple" multiple>
+                    </div>
+                </div>
+                <div class="Home text-center">
+                    <a href="provider-homepage.html">
+                        <button class="btn btn-primary"
+                            style="background-color: rgb(255, 123, 0); border-color: orange;">Create
+                            Service</button>
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="Home text-center">
-            <a href="provider-create-service.html">
-                <button class="btn btn-primary" style="background-color: rgb(255, 123, 0); border-color: orange;">Create
-                    Service</button>
-            </a>
-        </div>
+    </div>
 
     </div>
 
