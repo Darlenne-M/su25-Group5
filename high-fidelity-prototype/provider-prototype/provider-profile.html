@@ -15,7 +15,7 @@
 </head>
 
 <body>
-       <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(255, 123, 0);">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(255, 123, 0);">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Trotter</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -30,8 +30,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="provider-create-service.html">Create Service</a>
                     </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="provider-reply-reviews.html">Reviews</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="provider-cust-stats.html">Statistics</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="provider-homepage.html#contact-us">Contact Us</a>
@@ -46,8 +46,8 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                                <li><a class="dropdown-item" href="../homepage.html">Log Out</a></li>
-                            
+                            <li><a class="dropdown-item" href="../homepage.html">Log Out</a></li>
+
                         </ul>
                     </li>
                 </ul>
@@ -62,92 +62,104 @@
         <div class="position-absolute top-0 end-0">
             <button class="btn btn-primary" style="background-color: rgb(255, 123, 0); border-color: orange;"
                 onclick="confirmRemoval()">
-                Remove Account
+                Remove Account <i class="bi bi-trash3"></i>
             </button>
         </div>
 
-        <h5 class="text-center mb-4">Account Settings</h5>
-        <h6 class="text-center mb-4">Account Information</h5>
 
-            <div class="container mt-5" style="max-width: 600px;">
+        <div class="d-flex justify-content-center">
+            <div class="card w-50 mb-3">
+                <div class="card-header">
+                    <h5 class="text-center mb-4">Account Settings</h5>
+                    <h6 class="text-center mb-4">Account Information</h5>
+                </div>
+                <div class="card-body">
 
-                <!-- Name -->
-                <div class="setting-group" id="group-name">
-                    <div class="setting-label">Name</div>
-                    <div class="setting-view d-flex justify-content-between">
-                        <div><span id="text-first-name">Cynthia</span> <span id="text-last-name">Espinoza</span></div>
-                        <button class="btn btn-sm btn-outline-primary" onclick="toggleEdit('name')">Edit</button>
-                    </div><br>
-
-                    <!-- Address -->
-                    <div class="setting-group" id="group-address">
-                        <div class="setting-label">Address</div>
+                    <!-- Name -->
+                    <div class="setting-group" id="group-name">
+                        <div class="setting-label">Name</div>
                         <div class="setting-view d-flex justify-content-between">
-                            <div>
-                                <div id="text-address">1234 Summerfield Rd.</div>
+                            <div><span id="text-first-name">Cynthia</span> <span id="text-last-name">Espinoza</span>
                             </div>
-                            <button class="btn btn-sm btn-outline-primary" onclick="toggleEdit('address')">Edit</button>
-                        </div>
-                        <br>
-                        <!-- Phone -->
-                        <div class="setting-group" id="group-phone">
-                            <div class="setting-label">Phone Number</div>
+                            <button class="btn btn-sm btn-outline-primary" onclick="toggleEdit('name')">Edit</button>
+                        </div><br>
+
+                        <!-- Address -->
+                        <div class="setting-group" id="group-address">
+                            <div class="setting-label">Address</div>
                             <div class="setting-view d-flex justify-content-between">
-                                <div id="text-phone">123-456-7890</div>
+                                <div>
+                                    <div id="text-address">1234 Summerfield Rd.</div>
+                                </div>
                                 <button class="btn btn-sm btn-outline-primary"
-                                    onclick="toggleEdit('phone')">Edit</button>
-                            </div><br>
-
-
-                            <!-- Cities -->
-                            <div class="setting-group" id="group-cities">
-                                <div class="setting-label">Cities You Can Provide Services To:</div>
+                                    onclick="toggleEdit('address')">Edit</button>
+                            </div>
+                            <br>
+                            <!-- Phone -->
+                            <div class="setting-group" id="group-phone">
+                                <div class="setting-label">Phone Number</div>
                                 <div class="setting-view d-flex justify-content-between">
-                                    <div id="text-cities">Greensboro</div>
+                                    <div id="text-phone">123-456-7890</div>
                                     <button class="btn btn-sm btn-outline-primary"
-                                        onclick="toggleEdit('cities')">Edit</button>
+                                        onclick="toggleEdit('phone')">Edit</button>
                                 </div><br>
 
-                                <!-- Email -->
-                                <div class="setting-group" id="group-email">
-                                    <div class="setting-label">Email</div>
-                                    <div class="setting-view d-flex justify-content-between align-items-center">
-                                        <div id="text-email">darlenemosqueda4@gmail.com</div>
-                                        <button class="btn btn-sm btn-outline-primary"
-                                            onclick="toggleEdit('email')">Edit</button>
-                                    </div><br>
-                                </div><br>
 
-                                <div class="setting-group" id="group-password">
-                                    <div class="setting-label">Password</div>
+                                <!-- Cities -->
+                                <div class="setting-group" id="group-cities">
+                                    <div class="setting-label">Cities You Can Provide Services To:</div>
                                     <div class="setting-view d-flex justify-content-between">
-                                        <div id="text-password">••••••••••</div>
-                                        <button class="btn btn-sm btn-outline-danger"
-                                            onclick="toggleEdit('password')">Change</button>
+                                        <div id="text-cities">Greensboro</div>
+                                        <button class="btn btn-sm btn-outline-primary"
+                                            onclick="toggleEdit('cities')">Edit</button>
                                     </div><br>
 
-                                    <div class="setting-group" id="group-certifications">
-                                        <div class="setting-label">Certifications or Licenses</div>
-                                        <div class="setting-view d-flex justify-content-between">
-                                            <div id="text-certifications">None uploaded</div>
+                                    <!-- Email -->
+                                    <div class="setting-group" id="group-email">
+                                        <div class="setting-label">Email</div>
+                                        <div class="setting-view d-flex justify-content-between align-items-center">
+                                            <div id="text-email">darlenemosqueda4@gmail.com</div>
                                             <button class="btn btn-sm btn-outline-primary"
-                                                onclick="toggleEdit('certifications')">Upload</button>
-                                        </div>
-                                        <div class="container mt-5 d-flex justify-content-center">
+                                                onclick="toggleEdit('email')">Edit</button>
+                                        </div><br>
+                                    </div><br>
+
+                                    <div class="setting-group" id="group-password">
+                                        <div class="setting-label">Password</div>
+                                        <div class="setting-view d-flex justify-content-between">
+                                            <div id="text-password">••••••••••</div>
+                                            <button class="btn btn-sm btn-outline-danger"
+                                                onclick="toggleEdit('password')">Change</button>
+                                        </div><br>
+
+                                        <div class="setting-group" id="group-certifications">
+                                            <div class="setting-label">Certifications or Licenses</div>
+                                            <div class="setting-view d-flex justify-content-between">
+                                                <div id="text-certifications">None uploaded</div>
+                                                <button class="btn btn-sm btn-outline-primary"
+                                                    onclick="toggleEdit('certifications')">Upload</button>
+                                            </div>
+                                            <div class="container mt-5 d-flex justify-content-center">
+
+                                            </div>
+
 
                                         </div>
+                                    </div>
+                                </div>
 
 
-                                        <!-- JavaScript confirmation logic -->
-                                        <script>
-                                            function confirmRemoval() {
-                                                const confirmed = confirm("Are you sure you want to remove your account?");
-                                                if (confirmed) {
-                                                    // Redirect or handle account removal logic
-                                                    window.location.href = "../homepage.html"; // Or your deletion endpoint
-                                                }
-                                            }
-                                        </script>
+
+                                <!-- JavaScript confirmation logic -->
+                                <script>
+                                    function confirmRemoval() {
+                                        const confirmed = confirm("Are you sure you want to remove your account?");
+                                        if (confirmed) {
+                                            // Redirect or handle account removal logic
+                                            window.location.href = "../homepage.html"; // Or your deletion endpoint
+                                        }
+                                    }
+                                </script>
 
 </body>
 
