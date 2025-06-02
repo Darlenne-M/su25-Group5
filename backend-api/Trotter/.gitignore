@@ -33,5 +33,5 @@ build/
 .vscode/
 
 # Ignore sensitive Spring Boot config
-backend-api/src/main/resources/application.properties
+backend-api/Trotter/src/main/resources/application.properties
 
