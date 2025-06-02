@@ -31,7 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-# Ignore sensitive Spring Boot config
-backend-api/Trotter/src/main/resources/application.properties
-
