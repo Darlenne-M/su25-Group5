@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Ignore sensitive Spring Boot config
+backend-api/src/main/resources/application.properties
+
