@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.Trotter.ProviderReview.Review;
 import com.example.Trotter.ProviderServices.ServiceService;
-import com.example.Trotter.ProviderStats.StatsService;
-import com.example.Trotter.ProviderStats.StatsService;
 
 
 @Service
@@ -23,9 +21,6 @@ public class ProviderService {
 
     @Autowired
     private ServiceService serviceService;
-
-    @Autowired 
-    private StatsService statsService;
 
      /**
    * Method to get all providers
@@ -105,7 +100,7 @@ public class ProviderService {
    * @param providerId The ID of the provider to retrieve statistics for
    * @return A map containing the number of services and bookings for the provider
    */
-
+/*
    public Object getStatsByProviderId(Long providerId){
     Map<String, Object> result = new HashMap<String, Object>();
     List<Service> services = serviceService.getServicesByProviderId(providerId);
@@ -116,7 +111,7 @@ public class ProviderService {
     result.put("serviceCount", serviceService.getServicesByProviderId(providerId).size());
     result.put("bookingCount", bookingCount);
     return result;
-   }
+   } */
 
 
 
