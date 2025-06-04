@@ -7,8 +7,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.Trotter.ProviderReview.Review;
+import com.example.Trotter.ProviderServices.ServiceEntity;
 import com.example.Trotter.ProviderServices.ServiceService;
+import com.example.Trotter.ProviderBookings.BookingService;
 
 
 @Service
@@ -17,11 +18,10 @@ public class ProviderService {
     private ProviderRepository providerRepository;
 
     @Autowired
-    private ProviderService providerService;
-
-    @Autowired
     private ServiceService serviceService;
 
+    @Autowired
+    private BookingService bookingService;
      /**
    * Method to get all providers
    *
@@ -100,18 +100,18 @@ public class ProviderService {
    * @param providerId The ID of the provider to retrieve statistics for
    * @return A map containing the number of services and bookings for the provider
    */
-/*
+
    public Object getStatsByProviderId(Long providerId){
     Map<String, Object> result = new HashMap<String, Object>();
-    List<Service> services = serviceService.getServicesByProviderId(providerId);
+    List<ServiceEntity> services = serviceService.getServicesByProviderId(providerId);
     int bookingCount = 0;
-    for(Service service : services){
+    for(ServiceEntity service : services){
         bookingCount += bookingService.getBookingsByServiceId(service.getServiceId()).size();
     }
     result.put("serviceCount", serviceService.getServicesByProviderId(providerId).size());
     result.put("bookingCount", bookingCount);
     return result;
-   } */
+   } 
 
 
 

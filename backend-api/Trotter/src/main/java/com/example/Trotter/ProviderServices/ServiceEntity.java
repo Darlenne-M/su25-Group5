@@ -14,16 +14,14 @@ import jakarta.persistence.GenerationType;
 
 @Entity
 @Table(name = "services")
-public class Service {
+public class ServiceEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long serviceId;
 
-    private String title;
-
     @Column(nullable = false)
-    private String type;
+    private String serviceName;
 
     @Column(nullable = false)
     private String description;
@@ -46,42 +44,39 @@ public class Service {
     @JsonIgnoreProperties("services")
     private Provider provider;
     
-    public Service(){
+    public ServiceEntity(){
 
     }
 
-    public Service(Long serviceId, String title, String type, String description, String experience, float pricing, String perferredContactMethod, String serviceLocations, String travelRadius, String imagePath){
+    public ServiceEntity(Long serviceId, String serviceName, String description, String experience, float pricing, String preferredContactMethod, String serviceLocations, String travelRadius, String imagePath){
         this.serviceId = serviceId;
-        this.title = title;
-        this.type = type;
+        this.serviceName = serviceName;
         this.description = description;
         this.experience = experience;
         this.pricing = pricing;
-        this.preferredContactMethod = perferredContactMethod;
+        this.preferredContactMethod = preferredContactMethod;
         this.serviceLocations = serviceLocations;
         this.travelRadius = travelRadius;
         this.imagePath = imagePath;
     }
-     public Service(String title, String type, String description, String experience, float pricing, String perferredContactMethod, String serviceLocations, String travelRadius, String imagePath){
-        this.title = title;
-        this.type = type;
+     public ServiceEntity(String serviceName, String description, String experience, float pricing, String preferredContactMethod, String serviceLocations, String travelRadius, String imagePath){
+        this.serviceName = serviceName;
         this.description = description;
         this.experience = experience;
         this.pricing = pricing;
-        this.preferredContactMethod = perferredContactMethod;
+        this.preferredContactMethod = preferredContactMethod;
         this.serviceLocations = serviceLocations;
         this.travelRadius = travelRadius;
         this.imagePath = imagePath;
     }
 
-     public Service(Long serviceId, String title, String type, String description, String experience, float pricing, String perferredContactMethod, String serviceLocations, String travelRadius, String imagePath, Provider provider){
+     public ServiceEntity(Long serviceId, String serviceName, String description, String experience, float pricing, String preferredContactMethod, String serviceLocations, String travelRadius, String imagePath, Provider provider){
         this.serviceId = serviceId;
-        this.title = title;
-        this.type = type;
+        this.serviceName = serviceName;
         this.description = description;
         this.experience = experience;
         this.pricing = pricing;
-        this.preferredContactMethod = perferredContactMethod;
+        this.preferredContactMethod = preferredContactMethod;
         this.serviceLocations = serviceLocations;
         this.travelRadius = travelRadius;
         this.imagePath = imagePath;
@@ -89,20 +84,19 @@ public class Service {
     }
 
     
-     public Service(String title, String type, String description, String experience, float pricing, String perferredContactMethod, String serviceLocations, String travelRadius, String imagePath, Provider provider){
-        this.title = title;
-        this.type = type;
+     public ServiceEntity(String serviceName, String description, String experience, float pricing, String preferredContactMethod, String serviceLocations, String travelRadius, String imagePath, Provider provider){
+        this.serviceName = serviceName;
         this.description = description;
         this.experience = experience;
         this.pricing = pricing;
-        this.preferredContactMethod = perferredContactMethod;
+        this.preferredContactMethod = preferredContactMethod;
         this.serviceLocations = serviceLocations;
         this.travelRadius = travelRadius;
         this.imagePath = imagePath;
         this.provider = provider;
     }
 
-    public Long getProviderId(){
+    public Long getServiceId(){
         return serviceId;
     }
 
@@ -118,20 +112,12 @@ public class Service {
         this.provider = provider;
     }
 
-    public String getTitle(){
-        return title;
+    public String getServiceName(){
+        return serviceName;
     }
 
-    public void setTitle(String title){
-        this.title = title;
-    }
-    
-    public String getType(){
-        return type;
-    }
-
-    public void setType(String type){
-        this.type = type;
+    public void setServiceName(String serviceName){
+        this.serviceName = serviceName;
     }
       public String getDescription(){
         return description;
@@ -160,7 +146,7 @@ public class Service {
     public String getPreferredContactMethod(){
         return preferredContactMethod;
     }
-      public void getPreferredContactMethod(String preferredContactMethod){
+      public void setPreferredContactMethod(String preferredContactMethod){
         this.preferredContactMethod = preferredContactMethod;
     }
     

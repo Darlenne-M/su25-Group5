@@ -1,8 +1,7 @@
 package com.example.Trotter.ProviderProfile;
-import com.example.Trotter.ProviderServices.Service;
+import com.example.Trotter.ProviderServices.ServiceEntity;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
@@ -42,7 +41,7 @@ public class Provider {
 
     @OneToMany(mappedBy = "provider")
     @JsonIgnoreProperties("provider")
-    private List<Service> services;
+    private List<ServiceEntity> services;
 
     public Provider(){
 
@@ -61,7 +60,7 @@ public class Provider {
         this.password = password;
     }
 
-     public Provider(String firstName, String LastName, String address, String city, String state, String zip, String phone, String email, String password){
+     public Provider(String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password){
          this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -73,7 +72,7 @@ public class Provider {
         this.password = password;
     }
 
-      public Provider(Long providerId, String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password, List<Service> services ){
+      public Provider(Long providerId, String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password, List<ServiceEntity> services ){
         this.providerId = providerId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -87,7 +86,7 @@ public class Provider {
         this.services = services;
     }
 
-     public Provider(String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password, List<Service> services ){
+     public Provider(String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password, List<ServiceEntity> services ){
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -141,7 +140,7 @@ public class Provider {
     }
       
     public String getState(){
-        return city;
+        return state;
     }
 
     public void setState(String state){
@@ -168,7 +167,7 @@ public class Provider {
         return email;
     }
 
-    public void setEmail(){
+    public void setEmail(String email){
         this.email = email;
     }
     
@@ -180,11 +179,11 @@ public class Provider {
         this.password = password;
     }
       
-    public List<Service> getServices(){
+    public List<ServiceEntity> getServices(){
         return services;
     }
 
-    public void setServices(List<Service> services){
+    public void setServices(List<ServiceEntity> services){
         this.services = services;
 
     }
