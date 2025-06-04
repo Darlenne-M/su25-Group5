@@ -17,6 +17,7 @@ public class ProviderService {
     @Autowired
     private ProviderRepository providerRepository;
 
+    
     @Autowired
     private ServiceService serviceService;
 
@@ -91,6 +92,7 @@ public class ProviderService {
    * @return List of all providers
    */
     public Object deleteProvider(Long providerId){
+      providerRepository.deleteById(providerId);
         return providerRepository.findAll();
     }
 
@@ -102,15 +104,37 @@ public class ProviderService {
    */
 
    public Object getStatsByProviderId(Long providerId){
-    Map<String, Object> result = new HashMap<String, Object>();
-    List<ServiceEntity> services = serviceService.getServicesByProviderId(providerId);
-    int bookingCount = 0;
-    for(ServiceEntity service : services){
-        bookingCount += bookingService.getBookingsByServiceId(service.getServiceId()).size();
+      Map<String, Object> result = new HashMap<>();
+
+    try {
+        List<ServiceEntity> services = serviceService.getServicesByProviderId(providerId);
+        if (services == null) {
+            System.out.println("No services found for providerId: " + providerId);
+            result.put("error", "No services found");
+            return result;
+        }
+
+        int bookingCount = 0;
+        int repeatingServices = 0;
+
+        for (ServiceEntity service : services) {
+            int serviceBookingCount = bookingService.getBookingsByServiceId(service.getServiceId()).size();
+            bookingCount += serviceBookingCount;
+            if (serviceBookingCount > 1) {
+                repeatingServices++;
+            }
+        }
+
+        result.put("serviceCount", services.size());
+        result.put("totalBookings", bookingCount);
+        result.put("repeatingServices", repeatingServices);
+        return result;
+
+    } catch (Exception e) {
+        e.printStackTrace(); // Print the error in your console
+        result.put("error", "An error occurred: " + e.getMessage());
+        return result;
     }
-    result.put("serviceCount", serviceService.getServicesByProviderId(providerId).size());
-    result.put("bookingCount", bookingCount);
-    return result;
    } 
 
 
