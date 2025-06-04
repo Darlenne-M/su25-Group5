@@ -13,4 +13,6 @@ public interface BookingRepository extends JpaRepository<Booking, Long>{
 
     @Query(value = "select * from bookings b where b.service_id = ?1", nativeQuery = true)
     List<Booking> getBookingsByServiceId(Long serviceId);
+
+    
 }

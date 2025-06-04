@@ -18,6 +18,7 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reviewId;
 
+    
     @ManyToOne()
     @JoinColumn(name = "provider_id", nullable = false)
     @JsonIgnoreProperties("reviews")
@@ -67,11 +68,11 @@ public class Review {
         return service;
     }
       
-    public void setServiceId(ServiceEntity service){
+    public void setService(ServiceEntity service){
         this.service = service;
     }
     
-    public String getProviderRelpy(){
+    public String getProviderReply(){
         return providerReply;
     }
 

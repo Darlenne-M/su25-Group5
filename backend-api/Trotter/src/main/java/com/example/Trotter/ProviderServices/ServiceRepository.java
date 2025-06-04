@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface ServiceRepository extends JpaRepository<ServiceEntity, Long>{
     List<ServiceEntity> getServicesByServiceName(String name);
 
-    @Query(value = "select * from services s where c.provider_id = ?1", nativeQuery = true)
+    @Query(value = "select * from services s where s.provider_id = ?1", nativeQuery = true)
         List<ServiceEntity> getServicesByProviderId(long providerId);
     
 }

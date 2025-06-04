@@ -80,8 +80,9 @@ public class ProviderController {
    * @param provider The provider to update
    * @return List of all providers
    */
-  @PutMapping("/providers")
-  public Object updateProvider(@RequestBody Provider provider){
+  @PutMapping("/providers/{id}")
+  public Object updateProvider(@PathVariable Long id, @RequestBody Provider provider){
+      provider.setProviderId(id);
     return providerService.updateProvider(provider);
   }
 
@@ -102,12 +103,12 @@ public class ProviderController {
    * @param providerId The ID of the provider to retrieve statistics for
    * @return Statistics for the specified provider
    */
-  @GetMapping("/providers/stats/{providersId}")
-  public Object getStatsByProviderId(@PathVariable Long providerId){
-    return providerService.getStatsByProviderId(providerId);
-  }
-  
 
+  
+@GetMapping("/providers/{providerId}/stats")
+public Object getProviderStats(@PathVariable Long providerId) {
+    return providerService.getStatsByProviderId(providerId);
+}
 
    }
 
