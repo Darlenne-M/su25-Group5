@@ -41,9 +41,9 @@ A provider can sign up to create their profile with their first Name, last name,
 A provider shall be able to sign in using their registred email and password. After logging in, the provider shall be directed their dashboard where they see an overview of their services and bookings.
 ##### 2.2.1.3 Update Profile
 A provider shall be to modify their profile by going to their profile page. They can change their email, password, certificates, phone number, name, address.
-##### 2.2.1.4 Create Class
+##### 2.2.1.4 Create Service
 The provider shall be able to create a new service. They would provide a service name, description, experience, pricing, preferred contact method, service locations, travel radius, and an image path. This service will be created to be associated with only this provider.
-##### 2.2.1.4 Manage Class Content
+##### 2.2.1.4 Manage Services 
 A proider shall be able to accept and decline upcoming appointments, as well as reply to customer reviews.
 
 #### 2.2.2 Actor: Student
