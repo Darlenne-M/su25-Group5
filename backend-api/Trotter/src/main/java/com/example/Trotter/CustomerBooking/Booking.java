@@ -1,5 +1,7 @@
 package com.example.Trotter.CustomerBooking;
 
+import java.util.ServiceLoader.Provider;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
@@ -26,10 +28,15 @@ public class Booking {
 
     private String description;
 
+    @SuppressWarnings("rawtypes")
     @ManyToOne()
     @JoinColumn(name = "provider_id", nullable = false)
     @JsonIgnoreProperties("bookings")
-    private Provider provider;
+    private  Provider provider;
+
+    public void Course() {
+    
+    }
 
 
 
