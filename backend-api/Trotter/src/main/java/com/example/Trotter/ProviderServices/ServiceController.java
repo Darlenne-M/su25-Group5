@@ -35,7 +35,7 @@ public class ServiceController {
      * @return The service with the specified ID
      */
     @GetMapping("/services/{serviceId}")
-    public ServiceEntity getServiceById(@PathVariable Long serviceId) {
+    public com.example.Trotter.CustomerViewServices.ServiceEntity getServiceById(@PathVariable Long serviceId) {
         return serviceService.getServiceById(serviceId);
     }
 

@@ -21,13 +21,16 @@ public class CustomerService<CustomerRepository> {
 
     @Autowired
     private BookingService bookingService;
+
+    private Object bookingId;
+
     /**
      * Method to get all customers
      * 
      * @return List of all customers
      */
     public Object getAllCustomers() {
-        return customerRepository.findAll();
+        return customerRepository.findAll());
     }
 
     /**
@@ -104,7 +107,9 @@ public class CustomerService<CustomerRepository> {
         for(ServiceEntity service : services) {
             bookingCount += bookingService.getBookingsByServiceId(service.getServiceId()).size();
         }
-        result.put("reviewCount", reviewService.getReviewByCustomerId(customerId));
+        Object bookingServiceId;
+        Object reviewReview;
+        result.put("reviewCount", reviewReview.getReviewByBookingId(bookingId).size());
         result.put("bookingCount", bookingCount);
         return result;
     }
