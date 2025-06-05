@@ -1,8 +1,6 @@
 package com.example.Trotter.CustomerViewServices;
 
-import java.security.Provider;
-
-import com.example.Trotter.CustomerProfile.Customer;
+import com.example.Trotter.ProviderProfile.Provider;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
@@ -46,7 +44,7 @@ public class ServiceEntity {
     @ManyToOne()
     @JoinColumn(name = "provider_id")
     @JsonIgnoreProperties("services")
-    private Customer customer;
+    private Provider provider;
 
     public ServiceEntity() {
 
@@ -90,11 +88,23 @@ public class ServiceEntity {
 
     }
 
+    public ServiceEntity(String serviceName, String description, String experience, float pricing, String prefferedContactMethod, String serviceLocations, String travelRadius, String imagePath, Provider provider) {
+        this.serviceName = serviceName;
+        this.description = description;
+        this.experience = experience;
+        this.pricing = pricing;
+        this.prefferedContactMethod = prefferedContactMethod;
+        this.serviceLocations = serviceLocations;
+        this.travelRadius = travelRadius;
+        this.imagePath = imagePath;
+        this.provider = provider;
+    }
+
     public Long getServiceId() {
         return serviceId;
     }
 
-    public void setServiceId(String serviceId) {
+    public void setServiceId(Long serviceId) {
         this.serviceId = serviceId;
     }
 
@@ -110,7 +120,7 @@ public class ServiceEntity {
         return serviceName;
     }
 
-    public void setServiceName(String servicneName) {
+    public void setServiceName(String serviceName) {
         this.serviceName = serviceName;
     }
 

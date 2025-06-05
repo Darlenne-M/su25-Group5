@@ -1,5 +1,6 @@
 package com.example.Trotter.CustomerProfile;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +12,7 @@ import com.example.Trotter.CustomerViewServices.ServiceEntity;
 import com.example.Trotter.ProviderServices.ServiceService;
 
 @Service
-public class CustomerService {
+public class CustomerService<CustomerRepository> {
     @Autowired
     private CustomerRepository customerRepository;
 
