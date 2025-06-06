@@ -1,6 +1,12 @@
 package com.example.Trotter.ProviderProfile;
 
+import com.example.Trotter.ProviderServices.ServiceService;
+
+import java.io.Serial;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,23 +14,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+//import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
-@RestController
+@Controller
 public class ProviderController {
     
     @Autowired
     private ProviderService providerService;
+    @Autowired
+    private ServiceService serviceService;
      /**
    * Endpoint to get all providers
    *
    * @return List of all providers
    */
-
+/* 
    @GetMapping("/providers")
-   public Object getAllProviders(){
+   public Object getAllProviders(Model model){
+    model.addAttribute("null", model);
     return providerService.getAllProviders();
-   }
+   }*/
+
 
     /**
    * Endpoint to get a provider by ID
@@ -32,7 +43,7 @@ public class ProviderController {
    * @param id The ID of the provider to retrieve
    * @return The provider with the specified ID
    */
-   @GetMapping("/providers/{id}")
+     @GetMapping("/providers/{id}")
    public Provider getProviderById(@PathVariable Long id){
     return providerService.getProviderById(id);
    }
@@ -70,8 +81,10 @@ public class ProviderController {
    * @return List of all providers
    */
   @PostMapping("/providers")
-  public Object addProvider(@RequestBody Provider provider){
-    return providerService.addProvider(provider);
+  public Object addProvider(Provider provider, @RequestParam MultipartFile picture){
+    //return providerService.addProvider(provider);
+    Provider newProvider = providerService.addProvider(provider, picture);
+    return "redirect:/providers/" + newProvider.getProviderId();
   }
 
  /**
@@ -80,22 +93,33 @@ public class ProviderController {
    * @param provider The provider to update
    * @return List of all providers
    */
+  /* 
   @PutMapping("/providers/{id}")
   public Object updateProvider(@PathVariable Long id, @RequestBody Provider provider){
       provider.setProviderId(id);
     return providerService.updateProvider(provider);
   }
 
+
+
+
+
+
+
+
+  
+ * /
+
    /**
    * Endpoint to delete a provider by ID
    *
    * @param id The ID of the provider to delete
    * @return List of all providers
-   */
+   
   @DeleteMapping("/providers/{id}")
   public Object deleteProvider(@PathVariable Long id){
     return providerService.deleteProvider(id);
-  }
+  }*/
 
   /**
    * Endpoint to get statistics by provider ID

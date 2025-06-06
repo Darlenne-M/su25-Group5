@@ -42,12 +42,14 @@ public class Provider {
     @OneToMany(mappedBy = "provider")
     @JsonIgnoreProperties("provider")
     private List<ServiceEntity> services;
+    
+    private String profilePicturePath;
 
     public Provider(){
 
     }
 
-    public Provider(Long providerId, String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password ){
+    public Provider(Long providerId, String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password,  String profilePicturePath ){
         this.providerId = providerId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -58,9 +60,10 @@ public class Provider {
         this.phone = phone;
         this.email = email;
         this.password = password;
+        this.profilePicturePath = profilePicturePath;
     }
 
-     public Provider(String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password){
+     public Provider(String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password, String profilePicturePath){
          this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -70,9 +73,10 @@ public class Provider {
         this.phone = phone;
         this.email = email;
         this.password = password;
+         this.profilePicturePath = profilePicturePath;
     }
 
-      public Provider(Long providerId, String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password, List<ServiceEntity> services ){
+      public Provider(Long providerId, String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password, List<ServiceEntity> services, String profilePicturePath ){
         this.providerId = providerId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -84,9 +88,10 @@ public class Provider {
         this.email = email;
         this.password = password;
         this.services = services;
+         this.profilePicturePath = profilePicturePath;
     }
 
-     public Provider(String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password, List<ServiceEntity> services ){
+     public Provider(String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password, List<ServiceEntity> services, String profilePicturePath ){
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -97,6 +102,7 @@ public class Provider {
         this.email = email;
         this.password = password;
         this.services = services;
+         this.profilePicturePath = profilePicturePath;
     }
 
     public Long getProviderId(){
@@ -187,5 +193,13 @@ public class Provider {
         this.services = services;
 
     }
+    public String getProfilePicturePath() {
+        return profilePicturePath;
+    }
+
+    public void setProfilePicturePath(String profilePicturePath) {
+        this.profilePicturePath = profilePicturePath;
+    }
+
        
 }

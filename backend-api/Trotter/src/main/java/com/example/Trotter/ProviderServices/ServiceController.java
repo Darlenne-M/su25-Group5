@@ -1,6 +1,8 @@
 package com.example.Trotter.ProviderServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,11 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+//import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.annotation.Generated;
 
-@RestController
+@Controller
 public class ServiceController {
     @Autowired
     private ServiceService serviceService;
@@ -23,9 +26,11 @@ public class ServiceController {
      * @return List of all services
      */
 
-    @GetMapping("/services")
-    public Object getAllServices() {
-        return serviceService.getAllServices();
+    @GetMapping("/home")
+    public Object getAllServices(Model model) {
+        model.addAttribute("provider-homepage", serviceService.getAllServices());
+        model.addAttribute("title", "Your Services");
+        return "provider-homepage";
     }
 
     /**
@@ -34,9 +39,12 @@ public class ServiceController {
      * @param serviceId The ID of the service to retrieve
      * @return The service with the specified ID
      */
-    @GetMapping("/services/{serviceId}")
-    public ServiceEntity getServiceById(@PathVariable Long serviceId) {
-        return serviceService.getServiceById(serviceId);
+    @GetMapping("/home/services/{serviceId}")
+    public Object getServiceById(@PathVariable long id, Model model) {
+        //return serviceService.getServiceById(serviceId);
+        model.addAttribute("service", serviceService.getServiceById(id));
+        model.addAttribute("title", "Service no. " + id);
+        return "provider-service-details";
     }
 
     /**
@@ -45,13 +53,22 @@ public class ServiceController {
      * @param name The name of the service to search for
      * @return List of services with the specified name
      */
-    @Generated("/services/name")
-    public Object getServicesByName(@RequestParam String key) {
+    @Generated("/home/services/name")
+    public Object getServicesByName(@RequestParam String key, Model model) {
         if (key != null) {
-            return serviceService.getServicesByName(key);
+            model.addAttribute("provider-homepage", serviceService.getServicesByName(key));
+            model.addAttribute("title", "Services By Name" + key);
+            return "provider-homepage";
         } else {
-            return serviceService.getAllServices();
+            return "redirect:/home/";
         }
+    }
+    @GetMapping("/home/services/createForm")
+    public Object showCreateForm(Model model){
+        ServiceEntity service = new ServiceEntity();
+        model.addAttribute("service", service);
+        model.addAttribute("title", "Create New Service");
+        return "service-create";
     }
 
       /**
@@ -60,9 +77,11 @@ public class ServiceController {
    * @param service The service to add
    * @return List of all services
    */
-    @PostMapping("/services")
-    public Object addService(@RequestBody ServiceEntity service){
-        return serviceService.addService(service);
+    @PostMapping("/home/services")
+    public Object addService(ServiceEntity service, @RequestParam MultipartFile picture){
+        //return serviceService.addService(service);
+        ServiceEntity newService = serviceService.addService(service, picture);
+        return "redirect:/home/services/" + newService.getServiceId();
     }
       /**
    * Endpoint to update a service
@@ -70,12 +89,26 @@ public class ServiceController {
    * @param serviceId The ID of the service to update
    * @param service   The updated service information
    * @return The updated service
-   */
+ 
     @PutMapping("/services/{serviceId}")
     public ServiceEntity updateService(@PathVariable Long serviceId, @RequestBody ServiceEntity service){
         service.setServiceId(serviceId);
         serviceService.updateService(service);
         return serviceService.getServiceById(serviceId);
+    }  */
+
+    @GetMapping("/home/services/updateForm/{id}")
+    public Object showUpdateForm(@PathVariable Long id, Model model){
+        ServiceEntity service = serviceService.getServiceById(id);
+        model.addAttribute("service", service);
+        model.addAttribute("title", "Update Service no." + id);
+        return "provider-service-update";
+    }
+
+    @PostMapping("/home/services/update/{id}")
+    public Object updateService(@PathVariable Long id, ServiceEntity service, @RequestParam MultipartFile picture){
+        serviceService.updateService(id, service, picture);
+        return "redirect:/home/" + id;
     }
 
 /**
@@ -83,9 +116,10 @@ public class ServiceController {
    *
    * @param serviceId The ID of the service to delete
    */
-    @DeleteMapping("/services/{serviceId}")
-    public void deleteService(@PathVariable Long serviceId){
-        serviceService.deleteServiceById(serviceId);
+    @DeleteMapping("/home/services/{serviceId}")
+    public Object deleteServiceById(@PathVariable Long id){
+        serviceService.deleteServiceById(id);
+        return "redirect:/home/";
     }
 
       /**
@@ -94,6 +128,24 @@ public class ServiceController {
    * @param providerId The ID of the provider to search for
    * @return List of services provider by the specified provider
    */
+
+   @PostMapping("/home/services/writeFile")
+  public Object writeJson(@RequestBody ServiceEntity service) {
+    serviceService.writeJson(service);
+    return serviceService.writeJson(service);
+  }
+
+  /**
+   * Endpoint to read a JSON file and return its contents
+   *
+   * @return The contents of the JSON file
+   */
+  @GetMapping("/home/services/readFile")
+  public Object readJson() {
+    return serviceService.readJson();
+
+  }
+
     @GetMapping("/services/provider/{providerId}")
     public Object getServicesByProviderId(@PathVariable Long providerId){
         return serviceService.getServicesByProviderId(providerId);
