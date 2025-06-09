@@ -60,5 +60,8 @@ A student may drop/unregister for a class from the class page.
 
 ## 3. UML Class Diagram
 ![UML Class Diagram](https://github.com/Darlenne-M/su25-Group5/blob/BackendAPI-Darlenne/Object-Oriented-Design/provider-class-diagram-Darlenne.png)
+![UML Class Diagram-Customer](https://media.discordapp.net/attachments/1372241533981692077/1381770980841623643/image.png?ex=6848ba01&is=68476881&hm=e426fd77d31b3708a94575f63b034181c929bf2ee824c02b07d337c681b5ec89&=&format=webp&quality=lossless&width=1504&height=1326)
 ## 4. Database Schema
-![UML Class Diagram](https://github.com/Darlenne-M/su25-Group5/blob/BackendAPI-Darlenne/Object-Oriented-Design/provider-database-schema-Darlenne.png))
+![UML Class Diagram](https://github.com/Darlenne-M/su25-Group5/blob/BackendAPI-Darlenne/Object-Oriented-Design/provider-database-schema-Darlenne.png)
+(![Customer Database Schema](https://github.com/user-attachments/assets/f6c1bb3c-1b94-4e4f-a4eb-257653359af0)
+
