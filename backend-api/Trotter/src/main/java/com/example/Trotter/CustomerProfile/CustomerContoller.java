@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CustomerContoller {
 
-    @SuppressWarnings("rawtypes")
+   // @SuppressWarnings("rawtypes")
     @Autowired
     private CustomerService customerService;
 

@@ -41,12 +41,11 @@ public class Customer {
     private String password;
 
     @OneToMany(mappedBy = "customer")
+    // Using for JsonIgnoreProperties to avoid circular references during serialization
     @JsonIgnoreProperties("customer")
     private List<ServiceEntity> services;
 
     public Customer() {
-
-
     }
 
     public Customer(Long customerId, String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password) {

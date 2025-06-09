@@ -12,12 +12,22 @@ import com.example.Trotter.CustomerViewServices.ServiceEntity;
 import com.example.Trotter.ProviderServices.ServiceService;
 
 @Service
-public class CustomerService<CustomerRepository> {
-    @Autowired
-    private CustomerRepository customerRepository;
+public class CustomerService {
 
+    private final CustomerRepository customerRepository;
+
+    // Constructor
     @Autowired
-    private ServiceService serviceService;
+    public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    } 
+    
+    public List<Customer> getAllCustomers() {
+        return customerRepository.findAll();
+    }
+
+    //@Autowired
+   // private ServiceService serviceService;
 
     @Autowired
     private BookingService bookingService;
@@ -29,9 +39,9 @@ public class CustomerService<CustomerRepository> {
      * 
      * @return List of all customers
      */
-    public Object getAllCustomers() {
-        return customerRepository.findAll());
-    }
+    //public Object getAllCustomers() {
+    //    return customerRepository.findAll();
+   // }
 
     /**
      *Method to get a customer by ID 
