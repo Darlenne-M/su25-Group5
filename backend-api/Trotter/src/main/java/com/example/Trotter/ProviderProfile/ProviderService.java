@@ -38,21 +38,22 @@ public class ProviderService {
      * Method to get all providers
      *
      * @return List of all providers
+    
      */
     public Object getAllProviders() {
         return providerRepository.findAll();
-    }
+    } 
 
     /**
      * Method to get a provider by ID
      *
      * @param providerId The ID of the provider to retrieve
      * @return The provider with the specified ID
-     */
+    */
 
     public Provider getProviderById(@PathVariable long providerId) {
         return providerRepository.findById(providerId).orElse(null);
-    }
+    } 
 
     /**
      * Method to get providers by name
@@ -63,7 +64,7 @@ public class ProviderService {
 
     public List<Provider> getProvidersByName(String key) {
         return providerRepository.searchByName(key);
-    }
+    } 
 
     /**
      * Method to get providers by city
@@ -73,7 +74,7 @@ public class ProviderService {
      */
     public Object getProvidersByCity(String city) {
         return providerRepository.getProvidersByCity(city);
-    }
+    } 
 
     /**
      * Method to add a new provider

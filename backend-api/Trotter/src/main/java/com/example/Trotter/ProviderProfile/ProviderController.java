@@ -1,8 +1,10 @@
 package com.example.Trotter.ProviderProfile;
 
+import com.example.Trotter.ProviderServices.ServiceEntity;
 import com.example.Trotter.ProviderServices.ServiceService;
-
+import com.example.Trotter.ProviderServices.ServiceService;
 import java.io.Serial;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,128 +21,113 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class ProviderController {
-    
-    @Autowired
-    private ProviderService providerService;
-    @Autowired
-    private ServiceService serviceService;
-     /**
-   * Endpoint to get all providers
-   *
-   * @return List of all providers
-   */
-/* 
-   @GetMapping("/providers")
-   public Object getAllProviders(Model model){
-    model.addAttribute("null", model);
-    return providerService.getAllProviders();
-   }*/
 
+  @Autowired
+  private ProviderService providerService;
 
-    /**
-   * Endpoint to get a provider by ID
-   *
-   * @param id The ID of the provider to retrieve
-   * @return The provider with the specified ID
-   */
-     @GetMapping("/providers/{id}")
-   public Provider getProviderById(@PathVariable Long id){
-    return providerService.getProviderById(id);
-   }
+  @Autowired
+  private ServiceService serviceService;
 
-     /**
-   * Endpoint to get teachers by name
-   *
-   * @param key The name of the teacher to search for
-   * @return List of teachers with the specified name
-   */
-   @GetMapping("/providers/name")
-   public Object getProvidersByName(@RequestParam String key){
-     if (key != null) {
-      return providerService.getProvidersByName(key);
-    } else {
-      return providerService.getAllProviders();
-    }
+  @GetMapping("/providers/createForm")
+  public Object showCreateForm(Model model) {
+    Provider provider = new Provider();
+    model.addAttribute("provider", provider);
+    return "provider-sign-up";
   }
 
- /**
-   * Endpoint to get providers by city
-   *
-   * @param city The city to search for
-   * @return List of providers with the specified city
-   */
-  @GetMapping("/providers/city/{city}")
-  public Object getProvidersByCity(@PathVariable String city){
-    return providerService.getProvidersByCity(city);
-  }
-
- /**
+  /**
    * Endpoint to add a new provider
    *
    * @param provider The provider to add
    * @return List of all providers
    */
   @PostMapping("/providers")
-  public Object addProvider(Provider provider, @RequestParam MultipartFile picture){
-    //return providerService.addProvider(provider);
+  public Object addProvider(Provider provider, @RequestParam MultipartFile picture) {
+    // return providerService.addProvider(provider);
     Provider newProvider = providerService.addProvider(provider, picture);
-    return "redirect:/providers/" + newProvider.getProviderId();
+    return "redirect:/provider-homepage/" + newProvider.getProviderId(); // redirect to their homepage
   }
+  @GetMapping("/provider-homepage/{providerId}")
+public String providerHomepage(@PathVariable Long providerId, Model model) {
+    Provider provider = providerService.getProviderById(providerId);
+    if (provider == null) {
+        return "error"; // or custom 404 page
+    }
+    // Fetch services by provider ID
+    List<ServiceEntity> servicesList = serviceService.getServicesByProviderId(providerId);
+    
+    // Add provider and services to the model
+    model.addAttribute("provider", provider);
+    model.addAttribute("servicesList", servicesList);
+    
+    return "provider-homepage";
+}
 
- /**
+/* 
+  @GetMapping("/provider-homepage/{providerId}")
+  public String providerHomepage(@PathVariable Long providerId, Model model) {
+    Provider provider = providerService.getProviderById(providerId);
+    if (provider == null) {
+      return "error"; // or custom 404 page
+    }
+    model.addAttribute("provider", provider);
+    return "provider-homepage";
+  }*/
+
+  /**
    * Endpoint to update a provider
    *
    * @param provider The provider to update
    * @return List of all providers
    */
-  /* 
-  @PutMapping("/providers/{id}")
-  public Object updateProvider(@PathVariable Long id, @RequestBody Provider provider){
-      provider.setProviderId(id);
-    return providerService.updateProvider(provider);
+  @GetMapping("/provider-homepage/{providerId}/updateForm")
+  public Object showUpdateForm(@PathVariable Long providerId, Model model) {
+    Provider provider = providerService.getProviderById(providerId);
+    if (provider == null) {
+      return "error"; // or custom error view
+    }
+    model.addAttribute("provider", provider);
+    return "provider-profile";
   }
 
+  @PostMapping("/provider-homepage/{providerId}/update")
+  public Object updateProvider(@PathVariable Long providerId, Provider provider, @RequestParam MultipartFile picture) {
+    providerService.updateProvider(providerId, provider, picture);
+    return "redirect:/provider-homepage/" + providerId;
+  }
 
-
-
-
-
-
-
-  
- * /
-
-   /**
+  /**
    * Endpoint to delete a provider by ID
    *
    * @param id The ID of the provider to delete
-   * @return List of all providers
-   
-  @DeleteMapping("/providers/{id}")
+   */
+  @GetMapping("/providers/delete/{providerId}")
   public Object deleteProvider(@PathVariable Long id){
-    return providerService.deleteProvider(id);
-  }*/
+    providerService.deleteProvider(id);
+    return "redirect:/homepage/";
+  }
+
+  @PostMapping("/providers/writeFile")
+  public Object writeJson(@RequestBody Provider provider) {
+    providerService.writeJson(provider);
+    return providerService.writeJson(provider);
+  }
 
   /**
-   * Endpoint to get statistics by provider ID
+   * Endpoint to read a JSON file and return its contents
    *
-   * @param providerId The ID of the provider to retrieve statistics for
-   * @return Statistics for the specified provider
+   * 
+   * @return The contents of the JSON file
    */
+  @GetMapping("/providers/readFile")
+  public Object readJson() {
+    return providerService.readJson();
 
-  
-@GetMapping("/providers/{providerId}/stats")
-public Object getProviderStats(@PathVariable Long providerId) {
+  }
+
+  @GetMapping("/providers/{providerId}/stats")
+  public Object getProviderStats(@PathVariable Long providerId) {
     return providerService.getStatsByProviderId(providerId);
+  }
+
 }
-
-   }
-
-
-
-
-
-
-
-
-
