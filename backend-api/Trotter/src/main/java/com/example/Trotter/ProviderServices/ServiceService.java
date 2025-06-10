@@ -63,9 +63,9 @@ public class ServiceService {
    * @param service The service to add
    * @return List of all services
    */
-   public ServiceEntity addService(ServiceEntity service, MultipartFile imagePath){
+   public ServiceEntity addService(ServiceEntity service, MultipartFile image){
         ServiceEntity newService = serviceRepository.save(service);
-        String originalFileName = imagePath.getOriginalFilename();
+        String originalFileName = image.getOriginalFilename();
 
     try {
       if (originalFileName != null && originalFileName.contains(".")) {
@@ -73,7 +73,7 @@ public class ServiceService {
         String fileName = String.valueOf(newService.getServiceId()) + "." + fileExtension;
         Path filePath = Paths.get(UPLOAD_DIR + fileName);
 
-        InputStream inputStream = imagePath.getInputStream();
+        InputStream inputStream = image.getInputStream();
 
         Files.createDirectories(Paths.get(UPLOAD_DIR));// Ensure directory exists
         Files.copy(inputStream, filePath,
@@ -92,8 +92,8 @@ public class ServiceService {
    * @param service The service to update
    * @return List of all services
    */
-   public ServiceEntity updateService(Long serviceId, ServiceEntity service, MultipartFile imagePath){
-        String originalFileName = imagePath.getOriginalFilename();
+   public ServiceEntity updateService(Long serviceId, ServiceEntity service, MultipartFile image){
+        String originalFileName = image.getOriginalFilename();
 
     try {
       if (originalFileName != null && originalFileName.contains(".")) {
@@ -101,7 +101,7 @@ public class ServiceService {
         String fileName = String.valueOf(serviceId) + "." + fileExtension;
         Path filePath = Paths.get(UPLOAD_DIR + fileName);
 
-        InputStream inputStream = imagePath.getInputStream();
+        InputStream inputStream = image.getInputStream();
         Files.deleteIfExists(filePath);
         Files.copy(inputStream, filePath,
             StandardCopyOption.REPLACE_EXISTING);// Save file

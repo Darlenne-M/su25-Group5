@@ -26,16 +26,17 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="provider-homepage.ftlh">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/provider-homepage/${providerId}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="provider-service-create.ftlh">Create Service</a>
+                        <a class="nav-link" href="/provider-homepage/${providerId}/services/createForm">Create
+                            Service</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Statistics</a>
+                        <a class="nav-link" href="provider-cust-stats.html">Statistics</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
+                        <a class="nav-link" href="provider-homepage.html#contact-us">Contact Us</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -43,11 +44,11 @@
                             Account
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end"> <!-- Aligns dropdown to the right -->
-                            <li><a class="dropdown-item" href="provider-details.ftlh">My Profile</a></li>
+                            <li><a class="dropdown-item" href="/provider-homepage/${provider.providerId}/update">My Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Log Out</a></li>
+                            <li><a class="dropdown-item" href="../homepage.html">Log Out</a></li>
 
                         </ul>
                     </li>
@@ -57,7 +58,7 @@
         </div>
     </nav>
 
-    
+
     <div id="Trotter" class="Home text-center" style="background-color: rgb(255, 123, 0);">
         <br><br><br>
         <h1 style="font-size: 3rem; font-weight: bold; color: white;">Welcome To Trotter</h1>
@@ -65,14 +66,117 @@
         <div class="container mt-5 d-flex justify-content-center">
         </div>
         <div class="text-center">
-            <img src="/profile-pictures/homepage.jpg" class="img-fluid rounded-start" style="max-width: 20%;"
+            <img src="../profile-pictures/homepage.jpg" class="img-fluid rounded-start" style="max-width: 20%;"
                 alt="Customer photo">
         </div>
 
         <br><br><br><br>
 
     </div><br><br>
-    
+
+    <div class="d-flex justify-content-center">
+        <div class="card w-75 mb-3">
+            <div class="card-header">
+                Upcoming Appointments
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary"
+                    style="background-color: rgb(255, 123, 0); border-color: orange;">Message</a>
+                <a href="#" class="btn btn-primary"
+                    style="background-color: rgb(255, 123, 0); border-color: orange;">Reschedule</a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="d-flex justify-content-center">
+        <div class="card w-75 mb-3">
+            <div class="card-header">
+                Incoming Appointments
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary"
+                    style="background-color: rgb(255, 123, 0); border-color: orange;">Accept</a>
+                <a href="#" class="btn btn-primary"
+                    style="background-color: rgb(255, 123, 0); border-color: orange;">Deny</a>
+            </div>
+        </div>
+    </div>
+    <br><br>
+
+    <div id="services" class="d-flex justify-content-center">
+        <div class="card w-75 mb-3">
+            <div class="card-header">
+                Your Services
+            </div><br>
+
+            <div class="container">
+                <div class="row">
+                    <#list servicesList as service>
+                        <div class="col-md-4 mb-4"> <!-- 4 columns per card means 3 cards per row -->
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">${service.serviceName}</h5>
+                                    <p class="card-text">${service.description}</p>
+                                    <a href="/provider-homepage/${provider.providerId}/services/${service.serviceId}"
+                                        class="btn btn-primary"
+                                        style="background-color: rgb(255, 123, 0); border-color: orange;">
+                                        View
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </#list>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div><br>
+    </div>
+    <br><br>
+
+    <div id="contact-us" class="container bg-light">
+        <br><br><br><br>
+        <h1 class="text-center mb-4">CONTACT</h1><br>
+        <div class="row">
+
+            <div class="col-md-6 text-start">
+                <p>
+                    Contact us and we'll get back to you within 24 hours.<br>
+                    <i class="bi bi-geo-alt"></i> North Carolina, US<br>
+                    <i class="bi bi-telephone"></i> +00 1515151515<br>
+                    <i class="bi bi-envelope-at"></i> TrotterCo@gmail.com<br>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <form>
+                    <div class="mb-3">
+                        <label for="nameInput" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="nameInput" placeholder="Your name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="emailInput" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="commentTextarea" class="form-label">Comment</label>
+                        <textarea class="form-control" id="commentTextarea" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary"
+                        style="background-color: rgb(255, 123, 0); border-color: orange;">
+                        Send
+                    </button>
+                </form>
+                <br><br><br><br>
+            </div>
+        </div>
+
+
 </body>
 
 </html>
