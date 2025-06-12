@@ -12,6 +12,12 @@
         crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
+     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -36,7 +42,7 @@
                         <a class="nav-link" href="provider-cust-stats.html">Statistics</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="provider-homepage.html#contact-us">Contact Us</a>
+                        <a class="nav-link" href="#contact-us">Contact Us</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -44,7 +50,7 @@
                             Account
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end"> <!-- Aligns dropdown to the right -->
-                            <li><a class="dropdown-item" href="/provider-homepage/${provider.providerId}/update">My Profile</a></li>
+                            <li><a class="dropdown-item" href="/provider-homepage/${provider.providerId}/updateForm">My Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -61,13 +67,13 @@
 
     <div id="Trotter" class="Home text-center" style="background-color: rgb(255, 123, 0);">
         <br><br><br>
-        <h1 style="font-size: 3rem; font-weight: bold; color: white;">Welcome To Trotter</h1>
+        <h1 style="font-size: 3rem; font-weight: bold; color: white;">Welcome To Trotter ${provider.firstName}!</h1>
         <h6 style="color: white;">Your journey as a provider starts here!</h6>
         <div class="container mt-5 d-flex justify-content-center">
         </div>
         <div class="text-center">
             <img src="../profile-pictures/homepage.jpg" class="img-fluid rounded-start" style="max-width: 20%;"
-                alt="Customer photo">
+                alt="Customer photo"> 
         </div>
 
         <br><br><br><br>
@@ -123,10 +129,11 @@
                                     <h5 class="card-title">${service.serviceName}</h5>
                                     <p class="card-text">${service.description}</p>
                                     <a href="/provider-homepage/${provider.providerId}/services/${service.serviceId}"
-                                        class="btn btn-primary"
-                                        style="background-color: rgb(255, 123, 0); border-color: orange;">
-                                        View
-                                    </a>
+   class="btn btn-primary"
+   style="background-color: rgb(255, 123, 0); border-color: orange;">
+   View
+</a>
+
                                 </div>
                             </div>
                         </div>

@@ -29,6 +29,7 @@ public class ServiceController {
      *
      * @return List of all services
      */
+    
 
     @GetMapping("/provider-homepage/{providerId}/services")
     public Object getAllServices(@PathVariable Long providerId, Model model) {
@@ -52,11 +53,9 @@ public class ServiceController {
      *         }
      */
     @GetMapping("/provider-homepage/{providerId}/services/{serviceId}")
-    public Object getServiceById(@PathVariable("providerId") Long providerId,
-            @PathVariable("serviceId") Long serviceId,
-            Model model) {
+    public Object getServiceById(@PathVariable Long providerId, @PathVariable Long serviceId, Model model) {
         model.addAttribute("service", serviceService.getServiceById(serviceId));
-        model.addAttribute("providerId", providerId);
+        model.addAttribute("provider", serviceService.getServicesByProviderId(providerId));
         return "provider-service-details";
     }
 
@@ -121,18 +120,18 @@ public class ServiceController {
      *         }
      */
 
-    @GetMapping("/provider-homepage/{providerId}/services/updateForm/{id}")
-    public Object showUpdateForm(@PathVariable Long id, Model model) {
-        ServiceEntity service = serviceService.getServiceById(id);
+    @GetMapping("/provider-homepage/{providerId}/services/updateForm")
+    public Object showUpdateForm(@PathVariable Long providerId, Model model) {
+        ServiceEntity service = serviceService.getServiceById(providerId);
         model.addAttribute("service", service);
-        model.addAttribute("title", "Update Service no." + id);
-        return "provider-service-update";
+        return "provider-service-details";
     }
 
-    @PostMapping("/provider-homepage/{providerId}/services/update/{id}")
-    public Object updateService(@PathVariable Long id, ServiceEntity service, @RequestParam MultipartFile picture) {
-        serviceService.updateService(id, service, picture);
-        return "redirect:/services/" + id;
+    @PostMapping("/provider-homepage/{providerId}/services/update")
+    public Object updateService(@PathVariable Long providerId, ServiceEntity service,
+            @RequestParam MultipartFile picture) {
+        serviceService.updateService(providerId, service, picture);
+        return "redirect:/provider-homepage/" + providerId;
     }
 
     /**
@@ -140,10 +139,10 @@ public class ServiceController {
      *
      * @param serviceId The ID of the service to delete
      */
-    @DeleteMapping("/provider-homepage/{providerId}/services/{serviceId}")
-    public Object deleteServiceById(@PathVariable Long id) {
-        serviceService.deleteServiceById(id);
-        return "redirect:/services/";
+    @GetMapping("/provider-homepage/{providerId}/delete/{serviceId}")
+    public Object deleteServiceById(@PathVariable Long providerId, @PathVariable Long serviceId) {
+        serviceService.deleteServiceById(serviceId);
+        return "redirect:/provider-homepage/" + providerId;
     }
 
     /**

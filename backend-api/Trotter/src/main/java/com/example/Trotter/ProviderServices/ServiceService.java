@@ -1,5 +1,7 @@
 package com.example.Trotter.ProviderServices;
 
+import com.example.Trotter.ProviderProfile.Provider;
+import com.example.Trotter.ProviderProfile.ProviderRepository;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -24,8 +26,13 @@ public class ServiceService {
     @Autowired
     private ServiceRepository serviceRepository;
 
+    private ProviderRepository providerRepository;
+    
     private static final String UPLOAD_DIR = "src/main/resources/static/profile-pictures/";
 
+     public Provider getProviderById(@PathVariable long providerId) {
+        return providerRepository.findById(providerId).orElse(null);
+    }
      /**
    * Method to get all services
    *

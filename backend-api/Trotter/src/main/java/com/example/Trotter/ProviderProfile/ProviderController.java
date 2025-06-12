@@ -28,6 +28,13 @@ public class ProviderController {
   @Autowired
   private ServiceService serviceService;
 
+  @GetMapping("/trotter")
+  public String showHome(Model model) {
+    return "homepage"; 
+  }
+
+ 
+
   @GetMapping("/providers/createForm")
   public Object showCreateForm(Model model) {
     Provider provider = new Provider();
@@ -47,32 +54,34 @@ public class ProviderController {
     Provider newProvider = providerService.addProvider(provider, picture);
     return "redirect:/provider-homepage/" + newProvider.getProviderId(); // redirect to their homepage
   }
-  @GetMapping("/provider-homepage/{providerId}")
-public String providerHomepage(@PathVariable Long providerId, Model model) {
-    Provider provider = providerService.getProviderById(providerId);
-    if (provider == null) {
-        return "error"; // or custom 404 page
-    }
-    // Fetch services by provider ID
-    List<ServiceEntity> servicesList = serviceService.getServicesByProviderId(providerId);
-    
-    // Add provider and services to the model
-    model.addAttribute("provider", provider);
-    model.addAttribute("servicesList", servicesList);
-    
-    return "provider-homepage";
-}
 
-/* 
   @GetMapping("/provider-homepage/{providerId}")
   public String providerHomepage(@PathVariable Long providerId, Model model) {
     Provider provider = providerService.getProviderById(providerId);
     if (provider == null) {
       return "error"; // or custom 404 page
     }
+    // Fetch services by provider ID
+    List<ServiceEntity> servicesList = serviceService.getServicesByProviderId(providerId);
+
+    // Add provider and services to the model
     model.addAttribute("provider", provider);
+    model.addAttribute("servicesList", servicesList);
+
     return "provider-homepage";
-  }*/
+  }
+
+  /*
+   * @GetMapping("/provider-homepage/{providerId}")
+   * public String providerHomepage(@PathVariable Long providerId, Model model) {
+   * Provider provider = providerService.getProviderById(providerId);
+   * if (provider == null) {
+   * return "error"; // or custom 404 page
+   * }
+   * model.addAttribute("provider", provider);
+   * return "provider-homepage";
+   * }
+   */
 
   /**
    * Endpoint to update a provider
@@ -93,7 +102,8 @@ public String providerHomepage(@PathVariable Long providerId, Model model) {
   @PostMapping("/provider-homepage/{providerId}/update")
   public Object updateProvider(@PathVariable Long providerId, Provider provider, @RequestParam MultipartFile picture) {
     providerService.updateProvider(providerId, provider, picture);
-    return "redirect:/provider-homepage/" + providerId;
+    return "provider-profile";
+    // return "redirect:/provider-homepage/" + providerId;
   }
 
   /**
@@ -101,10 +111,16 @@ public String providerHomepage(@PathVariable Long providerId, Model model) {
    *
    * @param id The ID of the provider to delete
    */
-  @GetMapping("/providers/delete/{providerId}")
-  public Object deleteProvider(@PathVariable Long id){
-    providerService.deleteProvider(id);
-    return "redirect:/homepage/";
+  @GetMapping("/providers/delete/{id}")
+  public Object deleteProvider(@PathVariable Long id) {
+       try {
+        System.out.println("Trying to delete provider with ID: " + id);
+        providerService.deleteProvider(id);
+        return "redirect:/trotter";
+    } catch (Exception e) {
+        e.printStackTrace(); // Log the full error
+        return "error"; // You can create error.ftlh to show something friendly
+    }
   }
 
   @PostMapping("/providers/writeFile")

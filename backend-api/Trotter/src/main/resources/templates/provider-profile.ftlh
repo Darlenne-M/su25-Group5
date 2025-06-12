@@ -15,6 +15,7 @@
 </head>
 
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(255, 123, 0);">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Trotter</a>
@@ -25,16 +26,17 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="provider-homepage.html">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/provider-homepage/${providerId}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="provider-create-service.html">Create Service</a>
+                        <a class="nav-link" href="/provider-homepage/${providerId}/services/createForm">Create
+                            Service</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="provider-cust-stats.html">Statistics</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="provider-homepage.html#contact-us">Contact Us</a>
+                        <a class="nav-link" href="/provider-homepage/${providerId}#contact-us">Contact Us</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -42,7 +44,8 @@
                             Account
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end"> <!-- Aligns dropdown to the right -->
-                            <li><a class="dropdown-item" href="provider-profile.html">My Profile</a></li>
+                            <li><a class="dropdown-item" href="/provider-homepage/${provider.providerId}/updateForm">My
+                                    Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -57,89 +60,107 @@
     </nav>
     <div class="position-relative bg-light"> <br></div>
 
-    <div class="position-relative bg-light">
-        <!-- Remove Account button aligned to top-right -->
-        <div class="position-absolute top-0 end-0">
-            <button class="btn btn-primary" style="background-color: rgb(255, 123, 0); border-color: orange;"
-                onclick="confirmRemoval()">
-                Remove Account <i class="bi bi-trash3"></i>
-            </button>
+
+
+    <div class="d-flex justify-content-center">
+        <div class="card w-50 mb-3">
+            <div class="card-header">
+                <h5 class="text-center mb-4">Account Settings</h5>
+                <h6 class="text-center mb-4">Account Information</h5>
+            </div>
+            <div class="setting-group" id="group-name">
+                <div class="card-body">
+                    <form id="update-provider" action="/provider-homepage/${provider.providerId}/update" method="post"
+                        enctype="multipart/form-data">
+
+                        <div class="row">
+                            <div class="col">
+                                <label for="inputFirstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" name="firstName" id="inputFirstName"
+                                    value="${provider.firstName}" required>
+                            </div>
+                            <div class="col">
+                                <label for="inputLastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" name="lastName" id="inputLastName"
+                                    value="${provider.lastName}" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="inputAddress" class="form-label">Address</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="address" id="inputAddress"
+                                    value="${provider.address}" placeholder="Apartment, studio, or floor" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="inputCity" class="form-label">City</label>
+                                <input type="text" class="form-control" name="city" id="inputCity"
+                                    value="${provider.city}" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="inputState" class="form-label">State</label>
+                                <input type="text" class="form-control" name="state" id="inputState"
+                                    value="${provider.state}" required>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="inputZip" class="form-label">Zip</label>
+                                <input type="text" class="form-control" name="zip" id="inputZip" value="${provider.zip}"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="inputPhone" class="form-label">Phone Number</label>
+                            <div class="col-sm-10">
+                                <input type="tel" class="form-control" name="phone" id="inputPhone"
+                                    value="${provider.phone}" placeholder="123-456-7890" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" name="email" id="inputEmail3"
+                                    value="${provider.email}" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="inputPassword3" class="col-sm-3 col-form-label text-wrap">Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" name="password" id="inputPassword3"
+                                    value="${provider.password}" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="formFileMultiple" class="form-label">Upload profile picture</label>
+                            <input class="form-control" type="file" name="picture" id="formFileMultiple">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary"
+                            style="background-color: rgb(255, 123, 0); border-color: orange;">
+                            Update Profile
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+
+            <a href="/providers/delete/${provider.providerId}" class="btn btn-primary"
+                style="background-color: rgb(255, 123, 0); border-color: orange;"
+                onclick="return confirm('Are you sure you want to delete your account?');">
+                Delete Account
+            </a>
+
         </div>
 
 
-        <div class="d-flex justify-content-center">
-            <div class="card w-50 mb-3">
-                <div class="card-header">
-                    <h5 class="text-center mb-4">Account Settings</h5>
-                    <h6 class="text-center mb-4">Account Information</h5>
-                </div>
+    </div>
 
-                <form action="/provider-homepage/${provider.providerId}/update" method="post"
-                    enctype="multipart/form-data">
-                    <div class="card w-50 mb-3 mx-auto">
-                        <div class="card-header text-center">
-                            <h5>Account Settings</h5>
-                        </div>
-                        <div class="card-body">
-                            <!-- Name -->
-                            <div class="mb-3">
-                                <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstName" name="firstName"
-                                    value="${provider.firstName}" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" name="lastName"
-                                    value="${provider.lastName}" required>
-                            </div>
-                            <!-- Address -->
-                            <div class="mb-3">
-                                <label for="address" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="address" name="address"
-                                    value="${provider.address}">
-                            </div>
-                            <!-- Phone -->
-                            <div class="mb-3">
-                                <label for="phone" class="form-label">Phone Number</label>
-                                <input type="text" class="form-control" id="phone" name="phone"
-                                    value="${provider.phone}">
-                            </div>
-                            <!-- Cities -->
-                            <div class="mb-3">
-                                <label for="serviceableCities" class="form-label">Serviceable Cities</label>
-                                <input type="text" class="form-control" id="serviceableCities" name="serviceableCities"
-                                    value="${provider.serviceableCities}">
-                            </div>
-                            <!-- Email -->
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email"
-                                    value="${provider.email}" required>
-                            </div>
-                            <!-- Password (optional: you can leave empty to not update) -->
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password"
-                                    placeholder="••••••••••">
-                            </div>
-                            <!-- Certifications or Licenses Upload -->
-                            <div class="mb-3">
-                                <label for="certifications" class="form-label">Certifications or Licenses</label>
-                                <input type="file" class="form-control" id="certifications" name="certifications"
-                                    accept=".pdf,.jpg,.png,.docx">
-                            </div>
-                            <!-- Profile Picture Upload -->
-                            <div class="mb-3">
-                                <label for="picture" class="form-label">Profile Picture</label>
-                                <input type="file" class="form-control" id="picture" name="picture" accept="image/*">
-                            </div>
-                            <!-- Submit button -->
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-warning">Update Profile</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
 
 
 

@@ -12,6 +12,13 @@
         crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+
+
 </head>
 
 <body>
@@ -67,14 +74,14 @@
             </div>
         </div><br><br><br><br><br><br>
     </div>
-   
+
     </div>
 
     <div class="container bg-light" style="max-width: 1380px;">
-        <br><br>   <br><br>
+        <br><br> <br><br>
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="images/homepage.jpg" class="img-fluid rounded-start" alt="Customer photo">
+                <img src="/profile-pictures/homepage.jpg" class="img-fluid rounded-start" alt="homepage photo">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -98,7 +105,7 @@
         </div>
 
         <div class="Home text-center">
-             <br>
+            <br>
             <h6 class="mt-4">Our Mission</h6>
             <p>To empower small businesses and simplify access to trusted local services across North Carolina — one
                 connection at a time.</p>
@@ -121,20 +128,21 @@
 
     </div><br><br><br><br>
 
-<div id="Home" class="Home d-flex justify-content-center align-items-center text-center" style="min-height: 60vh;">
-  <div class="card p-5 shadow-lg" style="border: none; max-width: 400px;">
-    <h2 class="mb-4" >Sign Up As</h2>
-    <div class="d-grid gap-3">
-      <a href="provider-prototype/provider-sign-up.html" class="btn btn-lg btn-primary"
-         style="background-color: rgb(255, 123, 0); border-color: orange;">
-        👩‍🔧 Provider
-      </a>
-      <a href="client-sign-up.html" class="btn btn-lg btn-primary"
-         style="background-color: rgb(255, 123, 0); border-color: orange;">
-        🛍️ Client
-      </a>
-    </div>
-  </div></div><br><br>
+    <div id="Home" class="Home d-flex justify-content-center align-items-center text-center" style="min-height: 60vh;">
+        <div class="card p-5 shadow-lg" style="border: none; max-width: 400px;">
+            <h2 class="mb-4">Sign Up As</h2>
+            <div class="d-grid gap-3">
+                <a href="/providers/createForm" class="btn btn-lg btn-primary"
+                    style="background-color: rgb(255, 123, 0); border-color: orange;">
+                    👩‍🔧 Provider
+                </a>
+                <a href="client-sign-up.html" class="btn btn-lg btn-primary"
+                    style="background-color: rgb(255, 123, 0); border-color: orange;">
+                    🛍️ Client
+                </a>
+            </div>
+        </div>
+    </div><br><br>
 
 
     <br>
@@ -171,7 +179,7 @@
                         Send
                     </button>
                 </form>
-                 <br><br><br><br>
+                <br><br><br><br>
             </div>
         </div>
 

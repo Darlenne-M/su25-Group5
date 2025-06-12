@@ -34,7 +34,7 @@
                         <a class="nav-link" href="provider-cust-stats.html">Statistics</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="provider-homepage.html#contact-us">Contact Us</a>
+                        <a class="nav-link" href="/provider-homepage/${providerId}#contact-us">Contact Us</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -42,7 +42,7 @@
                             Account
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end"> <!-- Aligns dropdown to the right -->
-                            <li><a class="dropdown-item" href="provider-profile.html">My Profile</a></li>
+                            <li><a class="dropdown-item" href="/provider-homepage/${providerId}/updateForm">My Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

@@ -34,26 +34,28 @@ public class ProviderService {
     @Autowired
     private BookingService bookingService;
 
+   
+
     /**
      * Method to get all providers
      *
      * @return List of all providers
-    
+     * 
      */
     public Object getAllProviders() {
         return providerRepository.findAll();
-    } 
+    }
 
     /**
      * Method to get a provider by ID
      *
      * @param providerId The ID of the provider to retrieve
      * @return The provider with the specified ID
-    */
+     */
 
     public Provider getProviderById(@PathVariable long providerId) {
         return providerRepository.findById(providerId).orElse(null);
-    } 
+    }
 
     /**
      * Method to get providers by name
@@ -64,7 +66,7 @@ public class ProviderService {
 
     public List<Provider> getProvidersByName(String key) {
         return providerRepository.searchByName(key);
-    } 
+    }
 
     /**
      * Method to get providers by city
@@ -74,7 +76,7 @@ public class ProviderService {
      */
     public Object getProvidersByCity(String city) {
         return providerRepository.getProvidersByCity(city);
-    } 
+    }
 
     /**
      * Method to add a new provider
@@ -120,10 +122,10 @@ public class ProviderService {
                 InputStream inputStream = profilePicture.getInputStream();
                 Files.deleteIfExists(filePath);
                 Files.copy(inputStream, filePath,
-                StandardCopyOption.REPLACE_EXISTING);// Save file
+                        StandardCopyOption.REPLACE_EXISTING);// Save file
                 provider.setProfilePicturePath(fileName);
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return providerRepository.save(provider);
@@ -137,8 +139,8 @@ public class ProviderService {
      */
     public void deleteProvider(Long providerId) {
         Provider provider = providerRepository.findById(providerId).orElse(null);
-        if(provider == null){
-            return; //provider not found, nothing to delete
+        if (provider == null) {
+            return; // provider not found, nothing to delete
         }
         Path filePath = Paths.get(UPLOAD_DIR + provider.getProfilePicturePath());
         try {
@@ -190,21 +192,21 @@ public class ProviderService {
         }
     }
 
-    public String writeJson(Provider provider){
+    public String writeJson(Provider provider) {
         ObjectMapper objectMapper = new ObjectMapper();
-        try{
+        try {
             objectMapper.writeValue(new File("providers.json"), provider);
             return "Provider written to JSON file successfully";
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             return "Error writing provider to JSON file";
         }
     }
 
-    public Object readJson(){
+    public Object readJson() {
         ObjectMapper objectMapper = new ObjectMapper();
-        try{
-            return objectMapper.readValue(new File("providers.json"),Provider.class);
+        try {
+            return objectMapper.readValue(new File("providers.json"), Provider.class);
         } catch (IOException e) {
             e.printStackTrace();
             return null;

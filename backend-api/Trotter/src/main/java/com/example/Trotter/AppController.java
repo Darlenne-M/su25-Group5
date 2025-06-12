@@ -9,6 +9,6 @@ public class AppController {
     
     @GetMapping({ "", "/", "/home", "dashboard", "/services/" })
   public String showDashBoard() {
-    return "redirect:/services";
+    return "redirect:/trotter";
   }
 }
