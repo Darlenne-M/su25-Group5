@@ -28,7 +28,7 @@ public class ServiceService {
    * @return The service with the specified ID
    */
 
-   public com.example.Trotter.CustomerViewServices.ServiceEntity getServiceById(Long serviceId){
+   public ServiceEntity getServiceById(Long serviceId){
     return serviceRepository.findById(serviceId).orElse(null); 
   }
 

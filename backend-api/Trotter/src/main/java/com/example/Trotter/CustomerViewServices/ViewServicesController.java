@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,7 +12,7 @@ import com.example.Trotter.ProviderServices.ServiceService;
 import jakarta.annotation.Generated;
 
 @RestController
-public class ServiceController {
+public class ViewServicesController {
     @Autowired
     private ServiceService serviceService;
 
@@ -34,7 +33,7 @@ public class ServiceController {
      * @return The service with the specified ID
      */
     @GetMapping("/services/{serviceId}")
-    public ServiceEntity getServiceById(@PathVariable Long serviceId) {
+    public com.example.Trotter.ProviderServices.ServiceEntity getServiceById(@PathVariable Long serviceId) {
         return serviceService.getServiceById(serviceId);
     }
 
@@ -58,8 +57,11 @@ public class ServiceController {
      * 
      * return List of all services
      */
+    @SuppressWarnings("null")
     @PostMapping("/services")
-    public 
+     public Object getAllCustomers() {
+        ViewServicesController customerService = null;
+        return customerService.getAllCustomers();
     }
 
     /**

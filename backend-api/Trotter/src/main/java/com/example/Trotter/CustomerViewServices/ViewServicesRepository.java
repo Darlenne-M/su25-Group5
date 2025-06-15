@@ -6,11 +6,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import jakarta.persistence.OneToMany;
+
 @Repository
-public interface ServiceRepository extends JpaRepository<ServiceEntity, Long> {
-    List<ServiceEntity> getServiceByServiceName(String name);
+public interface ViewServicesRepository extends JpaRepository<ViewServices, Long> {
+    @OneToMany()
+    List<ViewServices> getServiceByServiceName(String name);
 
     @Query(value = "select * from services s where c. provider_id = ?1", nativeQuery = true)
-        List<ServiceEntity> getServicesByProviderId(Long providerId);
+        List<ViewServices> getServicesByProviderId(Long providerId);
 
 }

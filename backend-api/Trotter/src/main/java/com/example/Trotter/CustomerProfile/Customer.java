@@ -1,12 +1,16 @@
 package com.example.Trotter.CustomerProfile;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import com.example.Trotter.CustomerViewServices.ServiceEntity;
+import com.example.Trotter.CustomerViewServices.ViewServices;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -40,13 +44,15 @@ public class Customer {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "customer")
-    // Using for JsonIgnoreProperties to avoid circular references during serialization
-    @JsonIgnoreProperties("customer")
-    private List<ServiceEntity> services;
 
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("customer") //Circular reference handling
+    private Set<ViewServices> viewedServices = new HashSet<>();
+   
     public Customer() {
+
     }
+
 
     public Customer(Long customerId, String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password) {
         this.customerId = customerId;
@@ -59,7 +65,6 @@ public class Customer {
         this.phone = phone;
         this.email =email;
         this.password = password;
-
     }
 
     public Customer(String firstName, String lastName, String address, String city, String zip, String state, String phone, String email, String password) {
@@ -72,10 +77,9 @@ public class Customer {
         this.phone = phone;
         this.email = email;
         this.password = password;
-
     }
 
-    public Customer(Long customerId, String firstName, String lastName, String address, String city, String zip, String state, String phone, String email, String password, List<ServiceEntity> services) {
+    public Customer(Long customerId, String firstName, String lastName, String address, String city, String zip, String state, String phone, String email, String password,List<ViewServices> services) {
         this.customerId = customerId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -86,11 +90,18 @@ public class Customer {
         this.phone = phone;
         this.email = email;
         this.password = password;
-        this.services = services;
-
+           if(services != null) {
+            this.viewedServices = new HashSet<>(services);
+            for (ViewServices service: this.viewedServices) {
+                service.setCustomer(this);
+            }
+        }else {
+            this.viewedServices = new HashSet<>();
+        }
+    
     }
 
-    public Customer(String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password, List<ServiceEntity>services) {
+    public Customer(String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password, List<ViewServices>services) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -100,15 +111,22 @@ public class Customer {
         this.phone = phone;
         this.email = email;
         this.password = password;
-        this.services = services;
+         if(services != null) {
+            this.viewedServices = new HashSet<>(services);
+            for (ViewServices service: this.viewedServices) {
+                service.setCustomer(this);
+            }
+        }else {
+            this.viewedServices = new HashSet<>();
+        }
 
     }
 
-    public Long getCustomerId() {
+    public Long getId() {
         return customerId;
     }
 
-    public void setCustomerId(Long customerId) {
+    public void setId(Long customerId) {
         this.customerId = customerId;
     }
 
@@ -132,7 +150,7 @@ public class Customer {
         return address;
     }
 
-    public void setAdrress(String address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
@@ -184,12 +202,24 @@ public class Customer {
         this.password = password;
     }
 
-    public List<ServiceEntity> getServices() {
-        return services;
+    public Set<ViewServices> getViewedServices() {
+        return viewedServices;
     }
 
-    public void setServices (List<ServiceEntity> services) {
-        this.services = services;
+    //public void setViewedServices (Set<ViewServices> viewedServices) {
+    //    this.viewedServices = viewedServices;
+   // }
+
+     // Helper method to add a single ViewService to the collection and maintain bidirectional relationship
+    public void addViewedService(ViewServices service) {
+        this.viewedServices.add(service);
+        service.setCustomer(this); // Important: set the customer on the ViewServices side
+    }
+
+    // Helper method to remove a single ViewService from the collection
+    public void removeViewedService(ViewServices service) {
+        this.viewedServices.remove(service);
+        service.setCustomer(null); // Important: remove the customer from the ViewServices side
     }
 
 }

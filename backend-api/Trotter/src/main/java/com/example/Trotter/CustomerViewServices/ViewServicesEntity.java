@@ -1,5 +1,6 @@
 package com.example.Trotter.CustomerViewServices;
 
+import com.example.Trotter.CustomerProfile.Customer;
 import com.example.Trotter.ProviderProfile.Provider;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -13,8 +14,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "services")
-public class ServiceEntity {
+@Table(name = "view_services_entities")
+public class ViewServicesEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,15 +43,20 @@ public class ServiceEntity {
     private String imagePath;
 
     @ManyToOne()
-    @JoinColumn(name = "provider_id")
+    @JoinColumn(name = "customer_id")
     @JsonIgnoreProperties("services")
+    private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "provider_profile_id")
     private Provider provider;
 
-    public ServiceEntity() {
+
+    public ViewServicesEntity() {
 
     }
 
-    public ServiceEntity(Long serviceId, String serviceName, String description, String experience, float pricing, String prefferedContactMethod, String serviceLocations, String travelRadius, String imgaePath ) {
+    public ViewServicesEntity(Long serviceId, String serviceName, String description, String experience, float pricing, String prefferedContactMethod, String serviceLocations, String travelRadius, String imgaePath ) {
         this.serviceId = serviceId;
         this.serviceName = serviceName;
         this.description = description;
@@ -63,7 +69,7 @@ public class ServiceEntity {
 
     }
 
-    public ServiceEntity(String serviceName, String description, String experience, float pricing, String prefferedContactMethod, String serviceLocations,String travelRadius, String imagePath) {
+    public ViewServicesEntity(String serviceName, String description, String experience, float pricing, String prefferedContactMethod, String serviceLocations,String travelRadius, String imagePath) {
         this.serviceName = serviceName;
         this.description = description;
         this.experience = experience;
@@ -74,7 +80,7 @@ public class ServiceEntity {
         this.imagePath = imagePath;
     }
 
-    public ServiceEntity(Long serviceId, String serviceName, String description, String experience, float pricing, String prefferedContactMethod, String serviceLocations, String travelRadius, String imagePath, Provider provider) {
+    public ViewServicesEntity(Long serviceId, String serviceName, String description, String experience, float pricing, String prefferedContactMethod, String serviceLocations, String travelRadius, String imagePath, Customer customer) {
         this.serviceId = serviceId;
         this.serviceName = serviceName;
         this.description = description;
@@ -84,11 +90,11 @@ public class ServiceEntity {
         this.serviceLocations = serviceLocations;
         this.travelRadius = travelRadius;
         this.imagePath = imagePath;
-        this.provider = provider;
+        this.customer = customer;
 
     }
 
-    public ServiceEntity(String serviceName, String description, String experience, float pricing, String prefferedContactMethod, String serviceLocations, String travelRadius, String imagePath, Provider provider) {
+    public ViewServicesEntity(String serviceName, String description, String experience, float pricing, String prefferedContactMethod, String serviceLocations, String travelRadius, String imagePath, Customer customer) {
         this.serviceName = serviceName;
         this.description = description;
         this.experience = experience;
@@ -97,7 +103,7 @@ public class ServiceEntity {
         this.serviceLocations = serviceLocations;
         this.travelRadius = travelRadius;
         this.imagePath = imagePath;
-        this.provider = provider;
+        this.customer = customer;
     }
 
     public Long getServiceId() {
@@ -108,12 +114,12 @@ public class ServiceEntity {
         this.serviceId = serviceId;
     }
 
-    public Provider getProvider() {
-        return provider;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setProvider(Provider provider) {
-        this.provider = provider;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public String getServiceName() {
@@ -179,5 +185,6 @@ public class ServiceEntity {
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
+
 
 }

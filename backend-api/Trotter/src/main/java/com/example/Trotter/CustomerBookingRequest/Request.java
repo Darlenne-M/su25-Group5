@@ -1,11 +1,11 @@
-package com.example.Trotter.CustomerBooking;
+package com.example.Trotter.CustomerBookingRequest;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ServiceLoader.Provider;
 
-import com.example.Trotter.CustomerViewServices.ServiceEntity;
+import com.example.Trotter.CustomerProfile.Customer;
+import com.example.Trotter.CustomerViewServices.ViewServices;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
@@ -18,43 +18,44 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "bookings")
-public class Booking {
+@Table(name = "booking requests")
+public class Request {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private Long bookingId;
+    private Long id;
 
-    @SuppressWarnings("rawtypes")
-    @ManyToOne()
-    @JoinColumn(name = "provider_id", nullable = false)
-    @JsonIgnoreProperties("bookings")
-    private Provider provider;
+    //@ManyToOne()
+    //@JoinColumn(name = "bookingId", nullable = false)
+    //@JsonIgnoreProperties("bookings")
+    private Customer customer;
 
     @ManyToOne()
-    @JoinColumn(name = "provider_id",  nullable = false)
-    @JsonIgnoreProperties("provider")
-    private ServiceEntity service;
+    @JoinColumn(name = "service_id",  nullable = false)
+    @JsonIgnoreProperties("customer") //Foreign key column
+    private ViewServices service;
+    @Column(name = "bookingDate")
 
     private LocalDate bookingDate;
     private LocalTime startTime;
     private LocalTime endTime;
 
     @Column(nullable = false)
+
     private String status; //Approved, Canceled
 
     private String notes;
 
     private LocalDateTime createdAt;
 
-    public Booking() {
+    private Long bookingId;
+
+    public Request() {
 
     }
 
-    @SuppressWarnings("rawtypes")
-    public Booking(Long bookingId, Provider provider, ServiceEntity service, LocalDate bookingDate, LocalTime startTime, LocalTime endTime, String status, String notes, LocalDateTime createdAt) {
+    public Request(Long bookingId, Customer customer, ViewServices service, LocalDate bookingDate, LocalTime startTime, LocalTime endTime, String status, String notes, LocalDateTime createdAt) {
         this.bookingId = bookingId;
-        this.provider = provider;
         this.service = service;
         this.bookingDate = bookingDate;
         this.startTime = startTime;
@@ -64,9 +65,8 @@ public class Booking {
         this.createdAt = createdAt;
     }
 
-    @SuppressWarnings("rawtypes")
-    public Booking(Provider provider, ServiceEntity service, LocalDate bookingDate, LocalTime startTime, LocalTime endTime, String status, String notes, LocalDateTime createdAt ) {
-        this.provider = provider;
+    public Request(Customer customer, ViewServices service, LocalDate bookingDate, LocalTime startTime, LocalTime endTime, String status, String notes, LocalDateTime createdAt ) {
+        this.customer = customer;
         this.service = service;
         this.bookingDate = bookingDate;
         this.startTime = startTime;
@@ -84,20 +84,19 @@ public class Booking {
         this.bookingId = bookingId;
     }
 
-    @SuppressWarnings("rawtypes")
-    public Provider getProvider() {
-        return provider;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setProvider(@SuppressWarnings("rawtypes") Provider provider) {
-        this.provider = provider;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public ServiceEntity getService() {
+    public ViewServices getService() {
         return service;
     }
 
-    public void setService(ServiceEntity service) {
+    public void setService(ViewServices service) {
         this.service = service;
     }
 
@@ -148,5 +147,10 @@ public class Booking {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
+
+ //
+
+
+ //
     
 }

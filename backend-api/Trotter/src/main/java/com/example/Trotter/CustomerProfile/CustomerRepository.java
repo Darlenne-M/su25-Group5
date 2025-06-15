@@ -17,5 +17,4 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     
     List<Customer> getProvidersByCity(String city);
 
-    List<Customer> getAllCustomers(String CustomerRepository);
 }

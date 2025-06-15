@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.Trotter.CustomerViewServices.ViewServices;
+
 
 
 @Service
@@ -81,5 +83,15 @@ public class BookingService {
   public void deleteBookingById(Long bookingId){
     bookingRepository.deleteById(bookingId);
   }
+
+public List<ViewServices> getServiceByCustomerId(Long customerId) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getServiceByCustomerId'");
+}
+
+
+
+
+    
 
 }

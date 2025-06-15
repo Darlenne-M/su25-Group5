@@ -7,9 +7,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.Trotter.CustomerBooking.BookingService;
-import com.example.Trotter.CustomerViewServices.ServiceEntity;
-import com.example.Trotter.ProviderServices.ServiceService;
+import com.example.Trotter.CustomerViewServices.ViewServices;
+import com.example.Trotter.ProviderBookings.BookingService;
 
 @Service
 public class CustomerService {
@@ -17,31 +16,28 @@ public class CustomerService {
     private final CustomerRepository customerRepository;
 
     // Constructor
-    @Autowired
+    
     public CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     } 
     
-    public List<Customer> getAllCustomers() {
-        return customerRepository.findAll();
-    }
+    @Autowired
+    private BookingService viewService;
 
-    //@Autowired
-   // private ServiceService serviceService;
-
+    @SuppressWarnings("unused")
     @Autowired
     private BookingService bookingService;
 
-    private Object bookingId;
+    
 
     /**
      * Method to get all customers
      * 
      * @return List of all customers
      */
-    //public Object getAllCustomers() {
-    //    return customerRepository.findAll();
-   // }
+    public Object getAllCustomers() {
+    return customerRepository.findAll();
+    }
 
     /**
      *Method to get a customer by ID 
@@ -111,17 +107,23 @@ public class CustomerService {
      * @return Map that contains the number of bookings and reviews for the customer
      */
     public Object getStatsByCustomerId(Long customerId) {
-        Map<String, Object> result = new HashMap<String, Object>();
-        List<ServiceEntity> services = serviceService.getServicesByProviderId(providerId);
-        int bookingCount = 0;
-        for(ServiceEntity service : services) {
-            bookingCount += bookingService.getBookingsByServiceId(service.getServiceId()).size();
+        Map<String, Object> result = new HashMap<>();
+    String providerId = null;
+    
+         try {
+        List<ViewServices> services = viewService.getServiceByCustomerId(customerId);
+        if (services == null) {
+            System.out.println("No services found for providerId: " + providerId);
+            result.put("error", "No services found");
+            return result;
         }
-        Object bookingServiceId;
-        Object reviewReview;
-        result.put("reviewCount", reviewReview.getReviewByBookingId(bookingId).size());
-        result.put("bookingCount", bookingCount);
+    }catch(Exception e){
+         e.printStackTrace(); // Print the error in your console
+        result.put("error", "An error occurred: " + e.getMessage());
         return result;
+    }
+         return providerId;
+
     }
     
 }
