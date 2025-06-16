@@ -87,7 +87,7 @@ public class WriteReviewController {
      */
     @PutMapping("/reviews/{id}")
     public Object updateReview(@PathVariable Long id, @RequestBody WriteReview review) {
-        review.setReviewId(id, id);
+        review.setReviewId(id);
         return reviewService.updateReview(review);
     }
 }

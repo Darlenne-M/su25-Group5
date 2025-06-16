@@ -24,35 +24,34 @@ public class WriteReview {
     private Customer customer;
 
     @ManyToOne()
-    private ViewServices service;
     @JoinColumn(name = "service_id", nullable = false)
     @JsonIgnoreProperties("provider")
-    
+    private ViewServices service;
 
-    private String customerWrtie;
+    private String customerWrite;
 
     public WriteReview() {
 
     }
 
-    @SuppressWarnings("unused")
-    public WriteReview(Long reviewId, Customer customer, ViewServices service, String customerWrtie) {
+    public WriteReview(Long reviewId, Customer customer, ViewServices service, String customerWrite) {
         this.reviewId = reviewId;
         this.customer = customer;
         this.service = service;
-        Object customerWrite = null;
+        this.customerWrite = customerWrite;
     }
 
-    WriteReview(Customer customer, ViewServices service, String customerWrite) {
+    public WriteReview(Customer customer, ViewServices service, String customerWrite) {
         this.customer = customer;
         this.service = service;
+        this.customerWrite = customerWrite;
     }
 
     public Long getReviewId() {
         return reviewId;
     }
 
-    public void setReviewId(Long getReviewId, Long reviewId) {
+    public void setReviewId(Long reviewId) {
         this.reviewId = reviewId;
     }
 
@@ -73,11 +72,11 @@ public class WriteReview {
     }
 
     public String getCustomerWrite() {
-        return customerWrtie;
+        return customerWrite;
     }
 
     public void setCustomerWrtie(String customerWrite) {
-        this.customerWrtie = customerWrite;
+        this.customerWrite = customerWrite;
     }
 
 }

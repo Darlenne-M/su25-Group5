@@ -18,13 +18,13 @@ public class ViewServices {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String serviceName;
-    private String serviceDescription;
-    private double price;
-
     @ManyToOne
     @JoinColumn (name = "customer_id", nullable = false)
     private Customer customer;
+
+    private String serviceName;
+    private String serviceDescription;
+    private double price;
 
     public ViewServices() {
 
@@ -80,33 +80,5 @@ public class ViewServices {
     public void setCustomer( Customer customer) {
       this.customer = customer;
     }
-
-    //public Object getAllServices() {
-    //    return servicesRepository.getAllServices();
-   // }
-
-    /**
-     * Method to get a service by Id
-     * 
-     * @param serviceId The ID of the service to retrieve
-     * @return The servive with the specified ID
-     */
-
-   //  public ViewServices getServiceById(Long serviceId) {
-    //    return servicesRepository.getServiceById(serviceId);
-   //  }
-
-     /**
-      * Method to get services by name
-      *
-      * @param name The name of the service to search for
-      * @return List of services with the unique name
-      */
-    //  public Object getServicesByName(String name) {
-   //     return servicesRepository.getServiceById(id);
-   //   }
-
-   //   public List<ViewServices> getServicesByProviderId(Long providerId) {
-   //     return servicesRepository.getServicesByProviderId(providerId);
-  //    }
+    
 }       

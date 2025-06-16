@@ -12,7 +12,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     // T = Customer (entity class)
     // ID = Long (the type of your entity's ID)
 
-    @Query("SELECT c FROM Customer c WHERE LOWER(c.firstname) LIKE LOWER (CONCAT('%', :key, '%'))OR LOWER(c.lastName)LIKE LOWER(CONCAT('%', :key, '%'))")
+    @Query("SELECT c FROM Customer c WHERE LOWER(c.firstName) LIKE LOWER (CONCAT('%', :key, '%'))OR LOWER(c.lastName)LIKE LOWER(CONCAT('%', :key, '%'))")
     List<Customer> searchByName(@Param("key") String key);
     
     List<Customer> getProvidersByCity(String city);

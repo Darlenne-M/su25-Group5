@@ -119,7 +119,6 @@ public class Customer {
         }else {
             this.viewedServices = new HashSet<>();
         }
-
     }
 
     public Long getId() {
@@ -205,11 +204,6 @@ public class Customer {
     public Set<ViewServices> getViewedServices() {
         return viewedServices;
     }
-
-    //public void setViewedServices (Set<ViewServices> viewedServices) {
-    //    this.viewedServices = viewedServices;
-   // }
-
      // Helper method to add a single ViewService to the collection and maintain bidirectional relationship
     public void addViewedService(ViewServices service) {
         this.viewedServices.add(service);

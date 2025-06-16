@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class CustomerContoller {
+public class CustomerController {
 
    // @SuppressWarnings("rawtypes")
     @Autowired
@@ -102,7 +102,7 @@ public class CustomerContoller {
      * @param customerId The Id of the customer to retrieve stats
      * @return Stats for the specified customer
      */
-    @GetMapping("/customers/stats/{customersId}")
+    @GetMapping("/customers/stats/{customerId}")
     public Object getStatsByCustomerId(@PathVariable Long customerId) {
         return customerService.getStatsByCustomerId(customerId);
     }

@@ -89,6 +89,16 @@ public List<ViewServices> getServiceByCustomerId(Long customerId) {
     throw new UnsupportedOperationException("Unimplemented method 'getServiceByCustomerId'");
 }
 
+public int countBookingsByCustomerId(Long customerId) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'countBookingsByCustomerId'");
+}
+
+public int countReviewsByCustomerId(Long customerId) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'countReviewsByCustomerId'");
+}
+
 
 
 

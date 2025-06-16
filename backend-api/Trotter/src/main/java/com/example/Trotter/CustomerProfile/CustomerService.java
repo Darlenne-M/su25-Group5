@@ -7,7 +7,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.Trotter.CustomerViewServices.ViewServices;
 import com.example.Trotter.ProviderBookings.BookingService;
 
 @Service
@@ -21,10 +20,6 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     } 
     
-    @Autowired
-    private BookingService viewService;
-
-    @SuppressWarnings("unused")
     @Autowired
     private BookingService bookingService;
 
@@ -86,7 +81,7 @@ public class CustomerService {
      * @param customer The customer to update
      * @return List of all customers
      */
-    public Object updateCustomer(Customer customer) {
+    public Customer updateCustomer(Customer customer) {
        return customerRepository.save(customer);
     }
 
@@ -96,8 +91,12 @@ public class CustomerService {
      * @param customerId The Id of the customer to delete
      * @return List of all customers
      */
-    public Object deleteCustomer(Long CustomerId) {
-        return customerRepository.findAll();
+    public boolean deleteCustomer(Long CustomerId) {
+        if (customerRepository.existsById(CustomerId)) {
+            customerRepository.deleteById(CustomerId);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -106,24 +105,17 @@ public class CustomerService {
      * @param customerId The ID fo the customer to look up stats on
      * @return Map that contains the number of bookings and reviews for the customer
      */
-    public Object getStatsByCustomerId(Long customerId) {
+    public Map<String, Object> getStatsByCustomerId(Long customerId) {
         Map<String, Object> result = new HashMap<>();
-    String providerId = null;
-    
-         try {
-        List<ViewServices> services = viewService.getServiceByCustomerId(customerId);
-        if (services == null) {
-            System.out.println("No services found for providerId: " + providerId);
-            result.put("error", "No services found");
-            return result;
+        try {
+            //Example: get bookings and reviews count
+            int bookings = bookingService.countBookingsByCustomerId(customerId);
+            int reviews = bookingService.countReviewsByCustomerId(customerId);
+            result.put("bookings", bookings);
+            result.put("reviews", reviews);
+        } catch (Exception e) {
+            result.put("error","An error occurred: " + e.getMessage());
         }
-    }catch(Exception e){
-         e.printStackTrace(); // Print the error in your console
-        result.put("error", "An error occurred: " + e.getMessage());
         return result;
     }
-         return providerId;
-
-    }
-    
 }
