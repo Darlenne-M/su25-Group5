@@ -84,9 +84,10 @@
 
     <div class="container py-5">
         <h2 class="mb-4 text-center">Customer Statistics</h2>
-        <!-- Stats Cards -->
-        <div class="row text-center mb-5">
-            <div class="col-md-3">
+
+        <!-- Top Two Centered Cards -->
+        <div class="row justify-content-center text-center mb-4">
+            <div class="col-md-4 mb-3">
                 <div class="card shadow-sm">
                     <div class="card-body">
                         <h5 class="card-title">Total Services</h5>
@@ -94,9 +95,42 @@
                     </div>
                 </div>
             </div>
-            ...
+
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Bookings</h5>
+                        <h2>${totalBookings}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full-width Centered Bottom Card -->
+        <div class="row text-center">
+            <div class="col-md-8 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Repeating Services</h5>
+                        <h2>${repeatingServices}</h2>
+                        <#if repeatingServiceBookings?has_content && repeatingServiceBookings?size> 0>
+                            <ul class="list-group list-group-flush mt-3">
+                                <#list repeatingServiceBookings?keys as serviceId>
+                                    <li class="list-group-item">
+                                        ${serviceNames[serviceId]! "Unknown Service"} - Booked:
+                                        ${repeatingServiceBookings[serviceId]}
+                                    </li>
+                                </#list>
+                            </ul>
+                            <#else>
+                                <p class="text-muted mt-2">No repeating services.</p>
+                        </#if>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
 
 
     <br>

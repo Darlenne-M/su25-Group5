@@ -57,7 +57,9 @@
         </div>
     </nav>
     <br><br><br>
+    
     <div class="container" style="margin-top: 15px;">
+        <h1>Service No. ${serviceId}</h1>
         <div class="card">
             <h5 class="card-header">${service.serviceName}</h5>
             <div class="card-body">
@@ -74,6 +76,84 @@
                 <a href="/provider-homepage/${providerId}/delete/${service.serviceId}" class="btn btn-primary"
                     style="background-color: rgb(255, 123, 0); border-color: orange;">Delete
                     Service</a>
+            </div>
+        </div>
+<br><br><br>
+        <div class="d-flex justify-content-center">
+            <div class="card w-75 mb-3">
+                <div class="card-header">
+                    Dog Grooming Service
+
+                </div>
+                <div class="card-body">
+                    <div class="mx-auto" style="max-width: 900px;">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-md-2">
+                                <img src="../images/customer1.jpg" class="img-fluid rounded-start" alt="Customer photo">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+
+                                    <br><b>"Outstanding!"
+                                        <i class="bi bi-star-fill" style="color: gold;"></i>
+                                        <i class="bi bi-star-fill" style="color: gold;"></i>
+                                        <i class="bi bi-star-fill" style="color: gold;"></i>
+                                        <i class="bi bi-star-fill" style="color: gold;"></i>
+                                        <i class="bi bi-star-fill" style="color: gold;"></i>
+                                    </b>
+                                    <p class="card-text">
+                                        I couldn't be happier with the service! My golden retriever, Max, came out
+                                        looking and
+                                        smelling amazing.
+                                        The groomers were so gentle and clearly love what they do. They even trimmed
+                                        his nails and
+                                        added a cute little bandana!
+                                        The appointment was easy to book, and they were right on time.
+                                        Highly recommend to any pet parent looking for a caring and professional
+                                        grooming
+                                        experience!
+                                    </p>
+                                </div><br>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#replyModal"
+                                    style="background-color: rgb(255, 123, 0); border-color: orange;">
+                                    Reply
+                                </button>
+                                <!-- Reply Modal -->
+                                <div class="modal fade" id="replyModal" tabindex="-1" aria-labelledby="replyModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <form>
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="replyModalLabel">Reply to Review
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="mb-3">
+                                                        <label for="replyText" class="form-label">Your Reply</label>
+                                                        <textarea class="form-control" id="replyText" rows="4"
+                                                            placeholder="Write your reply here..."></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cancel</button>
+                                                    <button type="submit" class="btn btn-primary"
+                                                        style="background-color: rgb(255, 123, 0); border-color: orange;">Send
+                                                        Reply</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
