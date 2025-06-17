@@ -190,8 +190,7 @@ public class ProviderService {
                 if (count > 1) {
                     repeatingServices++;
                     repeatingServiceBookings.put(service.getServiceId(), count);
-                    serviceNames.put(service.getServiceId(), service.getServiceName()); // assuming getName() method
-                                                                                        // exists
+                    serviceNames.put(service.getServiceId(), service.getServiceName()); 
                 }
             }
 
@@ -203,7 +202,7 @@ public class ProviderService {
             return result;
 
         } catch (Exception e) {
-            e.printStackTrace(); // Print the error in your console
+            e.printStackTrace();
             result.put("error", "An error occurred: " + e.getMessage());
             return result;
         }

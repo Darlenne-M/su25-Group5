@@ -26,16 +26,14 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="provider-homepage.html">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/provider-homepage/${providerId}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="provider-create-service.html">Create Service</a>
+                        <a class="nav-link" href="/provider-homepage/${providerId}/services/createForm">Create Service</a>
                     </li>
+                    
                     <li class="nav-item">
-                        <a class="nav-link" href="provider-cust-stats.html">Statistics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="provider-homepage.html#contact-us">Contact Us</a>
+                        <a class="nav-link" href="/provider-homepage/${providerId}#contact-us">Contact Us</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -43,11 +41,12 @@
                             Account
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end"> <!-- Aligns dropdown to the right -->
-                            <li><a class="dropdown-item" href="provider-profile.html">My Profile</a></li>
+                            <li><a class="dropdown-item" href="/provider-homepage/${provider.providerId}/updateForm">My
+                                    Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="../homepage.html">Log Out</a></li>
+                            <li><a class="dropdown-item" href="/logout">Log Out</a></li>
 
                         </ul>
                     </li>

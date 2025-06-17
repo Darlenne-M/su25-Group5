@@ -30,6 +30,12 @@ public class CustomProviderDetailsService implements UserDetailsService{
 
     }
 
+    public Long getProviderIdByEmail(String email) {
+    return repo.getProviderByEmail(email)
+        .map(Provider::getProviderId)
+        .orElseThrow(() -> new UsernameNotFoundException(email + " not found"));
+}
+
 
     
 }

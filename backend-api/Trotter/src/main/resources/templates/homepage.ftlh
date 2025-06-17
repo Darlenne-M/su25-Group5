@@ -47,7 +47,8 @@
                             Account
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end"> <!-- Aligns dropdown to the right -->
-                            <li><a class="dropdown-item" href="provider-prototype/provider-login.html">Log In</a></li>
+                            <li><a class="dropdown-item" href="/login">Log In</a></li>
+
                             <li><a class="dropdown-item" href="#Home">Sign Up</a></li>
                         </ul>
                     </li>

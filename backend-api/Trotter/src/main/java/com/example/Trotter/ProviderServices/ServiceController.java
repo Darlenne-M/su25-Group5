@@ -29,6 +29,30 @@ public class ServiceController {
      *
      * @return List of all services
      */
+    @GetMapping("/services")
+    public Object getAllServices() {
+        return serviceService.getAllServices();
+    }
+
+     @GetMapping("/services/{serviceId}")
+    public ServiceEntity getServiceById(@PathVariable Long serviceId) {
+        return serviceService.getServiceById(serviceId);
+    }
+
+    /**
+     * Endpoint to get services by name
+     *
+     * @param name The name of the service to search for
+     * @return List of services with the specified name
+     */
+    @Generated("/services/name")
+    public Object getServicesByName(@RequestParam String key) {
+        if (key != null) {
+            return serviceService.getServicesByName(key);
+        } else {
+            return serviceService.getAllServices();
+        }
+    }
 
     @GetMapping("/provider-homepage/{providerId}/services")
     public Object getAllServices(@PathVariable Long providerId, Model model) {

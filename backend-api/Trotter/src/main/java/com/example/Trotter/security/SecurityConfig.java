@@ -39,16 +39,31 @@ public class SecurityConfig {
                         .dispatcherTypeMatchers(DispatcherType.FORWARD,
                                 DispatcherType.ERROR)
                         .permitAll()
-                        .requestMatchers("/", "/providers", "/trotter", "/providers/createForm").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/providers").permitAll()
-                        .requestMatchers("/provider-homepage/*","/providers/delete/**",
-                            "/provider-homepage/*/updateForm","/provider-homepage/*/update","/provider-homepage/*/services/createForm", "/provider-homepage/*/services",
-                                "/provider-homepage/*/services/**","/provider-homepage/*/delete/**","/provider-homepage/*/services/**/updateForm",
-                                "/providers/update/**","/providers/**/update").hasAuthority("PROVIDER")
+                        .requestMatchers("/", "/providers", "/trotter", "/providers/createForm", "/profile-pictures/**",
+                                "/login", "/logout")
+                        .permitAll()
+                        .requestMatchers(HttpMethod.POST, "/providers", "/profile-pictures/**").permitAll()
+                        .requestMatchers("/provider-homepage/*", "/providers/delete/**",
+                                "/provider-homepage/*/updateForm", "/provider-homepage/*/update",
+                                "/provider-homepage/*/services/createForm", "/provider-homepage/*/services",
+                                "/provider-homepage/*/services/**", "/provider-homepage/*/delete/**",
+                                "/provider-homepage/*/services/**/updateForm",
+                                "/providers/update/**", "/providers/**/update")
+                        .hasAuthority("PROVIDER")
                         .anyRequest().authenticated())
-                .formLogin(withDefaults())
+                .formLogin(form -> form
+                        .successHandler((request, response, authentication) -> {
+                            String username = authentication.getName();
+                            Long providerId = providerDetailsService.getProviderIdByEmail(username);
+                            response.sendRedirect("/provider-homepage/" + providerId);
+                        })
+                        .permitAll())
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/trotter")
+                        .permitAll())
+
                 .exceptionHandling((x) -> x.accessDeniedPage("/403"))
-                .logout(withDefaults())
+                
                 .requestCache((cache) -> cache
                         .requestCache(requestCache));
 

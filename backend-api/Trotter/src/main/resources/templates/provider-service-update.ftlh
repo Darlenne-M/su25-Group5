@@ -31,9 +31,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="provider-create-service.html">Create Service</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="provider-cust-stats.html">Statistics</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="provider-homepage.html#contact-us">Contact Us</a>
                     </li>
@@ -47,7 +45,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="../homepage.html">Log Out</a></li>
+                            <li><a class="dropdown-item" href="/logout">Log Out</a></li>
 
                         </ul>
                     </li>
