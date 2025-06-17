@@ -71,8 +71,10 @@
 
                     <div class="row mb-3">
                         <label for="inputAddress" class="form-label">Address</label>
-                        <input type="text" class="form-control" name="address" id="inputAddress"
-                            placeholder="Apartment, studio, or floor" required>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="address" id="inputAddress"
+                                placeholder="Apartment, studio, or floor" required>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -95,9 +97,11 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="inputPhone" class="form-label">Phone Number</label>
-                        <input type="tel" class="form-control" name="phone" id="inputPhone" placeholder="123-456-7890"
-                            required>
+                        <label for="inputPhone" class="col-sm-3 col-form-label">Phone Number</label>
+                        <div class="col-sm-10">
+                            <input type="tel" class="form-control" name="phone" id="inputPhone" placeholder="123-456-7890"
+                                required>
+                        </div>
                     </div>
 
                     <div class="row mb-3">
