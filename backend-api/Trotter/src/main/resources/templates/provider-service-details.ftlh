@@ -56,26 +56,28 @@
             </div>
         </div>
     </nav>
-<br><br><br>
-  <div class="container" style="margin-top: 15px;">
-    <div class="card">
-      <h5 class="card-header">${service.serviceName}</h5>
-      <div class="card-body">
-        <h5 class="card-title">ID: ${service.serviceId?c}</h5>
-        <p class="card-text">Description: ${service.description}</p>
-        <p class="card-text">City: ${service.serviceLocations}</p>
-        <p class="card-text">Experience: ${service.experience}</p>
-        <p class="card-text">Price: $${service.pricing}</p>
-        <p class="card-text">Contact: ${service.preferredContactMethod}</p>
-        <a href="/provider-homepage/${providerId}" class="btn btn-primary" 
-            style="background-color: rgb(255, 123, 0); border-color: orange;">Go back</a>
-         <a href="/provider-homepage/${providerId}/delete/${service.serviceId}" class="btn btn-primary" 
-            style="background-color: rgb(255, 123, 0); border-color: orange;">Delete
-          Service</a>
-      </div>
-    </div>
+    <br><br><br>
+    <div class="container" style="margin-top: 15px;">
+        <div class="card">
+            <h5 class="card-header">${service.serviceName}</h5>
+            <div class="card-body">
+                <img src="/service-pictures/${(service.imagePath)!'homepage.jpg'}" class="card-img-top"
+                    style="height: 100px; width: 100px;" alt="service Image">
+                <h5 class="card-title">ID: ${service.serviceId?c}</h5>
+                <p class="card-text">Description: ${service.description}</p>
+                <p class="card-text">City: ${service.serviceLocations}</p>
+                <p class="card-text">Experience: ${service.experience}</p>
+                <p class="card-text">Price: $${service.pricing}</p>
+                <p class="card-text">Contact: ${service.preferredContactMethod}</p>
+                <a href="/provider-homepage/${providerId}" class="btn btn-primary"
+                    style="background-color: rgb(255, 123, 0); border-color: orange;">Go back</a>
+                <a href="/provider-homepage/${providerId}/delete/${service.serviceId}" class="btn btn-primary"
+                    style="background-color: rgb(255, 123, 0); border-color: orange;">Delete
+                    Service</a>
+            </div>
+        </div>
 
-    
+
 
 
 </body>

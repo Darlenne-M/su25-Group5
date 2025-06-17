@@ -5,6 +5,7 @@ import com.example.Trotter.ProviderServices.ServiceService;
 import com.example.Trotter.ProviderServices.ServiceService;
 import java.io.Serial;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,12 +29,39 @@ public class ProviderController {
   @Autowired
   private ServiceService serviceService;
 
-  @GetMapping("/trotter")
-  public String showHome(Model model) {
-    return "homepage"; 
+  @GetMapping("/providers")
+  public Object getAllProviders() {
+    return providerService.getAllProviders();
   }
 
- 
+  @GetMapping("/providers/{id}")
+  public Provider getProviderById(@PathVariable Long id) {
+    return providerService.getProviderById(id);
+  }
+
+  @GetMapping("/providers/name")
+   public Object getProvidersByName(@RequestParam String key){
+     if (key != null) {
+      return providerService.getProvidersByName(key);
+    } else {
+      return providerService.getAllProviders();
+    }
+  }
+
+    @GetMapping("/providers/city/{city}")
+  public Object getProvidersByCity(@PathVariable String city){
+    return providerService.getProvidersByCity(city);
+  }
+
+  @GetMapping("/trotter")
+  public String showHome(Model model) {
+    return "homepage";
+  }
+
+  @GetMapping("/trotter/login")
+  public String showLogin(Model model) {
+    return "homepage";
+  }
 
   @GetMapping("/providers/createForm")
   public Object showCreateForm(Model model) {
@@ -67,6 +95,14 @@ public class ProviderController {
     // Add provider and services to the model
     model.addAttribute("provider", provider);
     model.addAttribute("servicesList", servicesList);
+
+     // Get stats
+    Map<String, Object> stats = (Map<String, Object>) providerService.getStatsByProviderId(providerId);
+    model.addAttribute("serviceCount", stats.get("serviceCount"));
+    model.addAttribute("totalBookings", stats.get("totalBookings"));
+    model.addAttribute("repeatingServices", stats.get("repeatingServices"));
+    model.addAttribute("repeatingServiceBookings", stats.get("repeatingServiceBookings"));
+    model.addAttribute("serviceNames", stats.get("serviceNames"));
 
     return "provider-homepage";
   }
@@ -113,13 +149,13 @@ public class ProviderController {
    */
   @GetMapping("/providers/delete/{id}")
   public Object deleteProvider(@PathVariable Long id) {
-       try {
-        System.out.println("Trying to delete provider with ID: " + id);
-        providerService.deleteProvider(id);
-        return "redirect:/trotter";
+    try {
+      System.out.println("Trying to delete provider with ID: " + id);
+      providerService.deleteProvider(id);
+      return "redirect:/trotter";
     } catch (Exception e) {
-        e.printStackTrace(); // Log the full error
-        return "error"; // You can create error.ftlh to show something friendly
+      e.printStackTrace(); // Log the full error
+      return "error"; // You can create error.ftlh to show something friendly
     }
   }
 
@@ -142,8 +178,16 @@ public class ProviderController {
   }
 
   @GetMapping("/providers/{providerId}/stats")
-  public Object getProviderStats(@PathVariable Long providerId) {
-    return providerService.getStatsByProviderId(providerId);
+  public Object getProviderStats(@PathVariable Long providerId, Model model) {
+    Map<String, Object> stats = (Map<String, Object>) providerService.getStatsByProviderId(providerId);
+
+    model.addAttribute("serviceCount", stats.get("serviceCount"));
+    model.addAttribute("totalBookings", stats.get("totalBookings"));
+    model.addAttribute("repeatingServices", stats.get("repeatingServices")); // count of repeating services
+    model.addAttribute("repeatingServiceBookings", stats.get("repeatingServiceBookings"));
+    model.addAttribute("serviceNames", stats.get("serviceNames"));
+
+    return "/provider-homepage/" + providerId;
   }
 
 }

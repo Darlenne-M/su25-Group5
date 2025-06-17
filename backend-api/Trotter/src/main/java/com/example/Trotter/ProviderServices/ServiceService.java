@@ -28,7 +28,7 @@ public class ServiceService {
 
     private ProviderRepository providerRepository;
     
-    private static final String UPLOAD_DIR = "src/main/resources/static/profile-pictures/";
+    private static final String UPLOAD_DIR = "src/main/resources/static/service-pictures/";
 
      public Provider getProviderById(@PathVariable long providerId) {
         return providerRepository.findById(providerId).orElse(null);
@@ -100,6 +100,7 @@ public class ServiceService {
    * @return List of all services
    */
    public ServiceEntity updateService(Long serviceId, ServiceEntity service, MultipartFile image){
+    
         String originalFileName = image.getOriginalFilename();
 
     try {

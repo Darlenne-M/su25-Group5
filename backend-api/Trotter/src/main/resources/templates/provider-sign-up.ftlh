@@ -113,7 +113,14 @@
                             <input type="password" class="form-control" name="password" id="inputPassword3" required>
                         </div>
                     </div>
-
+                    <label for="role"> Role:
+                    </label>
+                    <select name="role" id="role">
+                        <option value="USER">Customer</option>
+                        <option value="PROVIDER">Provider</option>
+                      
+                    </select>
+                    <br><br>
                     <div class="mb-3">
                         <label for="formFileMultiple" class="form-label">Upload certifications or licenses (if
                             applicable)</label>

@@ -29,7 +29,6 @@ public class ServiceController {
      *
      * @return List of all services
      */
-    
 
     @GetMapping("/provider-homepage/{providerId}/services")
     public Object getAllServices(@PathVariable Long providerId, Model model) {
@@ -80,7 +79,7 @@ public class ServiceController {
     public Object showCreateForm(@PathVariable Long providerId, Model model) {
         ServiceEntity service = new ServiceEntity();
         model.addAttribute("service", service);
-        model.addAttribute("providerId", providerId); // ✅ Make sure this is passed to FreeMarker
+        model.addAttribute("providerId", providerId);
         return "provider-create-service";
     }
 
@@ -120,18 +119,22 @@ public class ServiceController {
      *         }
      */
 
-    @GetMapping("/provider-homepage/{providerId}/services/updateForm")
-    public Object showUpdateForm(@PathVariable Long providerId, Model model) {
-        ServiceEntity service = serviceService.getServiceById(providerId);
+    @GetMapping("/provider-homepage/{providerId}/services/{serviceId}/updateForm")
+    public Object showUpdateForm(@PathVariable Long providerId,
+            @PathVariable Long serviceId,
+            Model model) {
+        ServiceEntity service = serviceService.getServiceById(serviceId); 
         model.addAttribute("service", service);
-        return "provider-service-details";
+        model.addAttribute("providerId", providerId);
+        return "provider-service-update";
     }
 
-    @PostMapping("/provider-homepage/{providerId}/services/update")
-    public Object updateService(@PathVariable Long providerId, ServiceEntity service,
-            @RequestParam MultipartFile picture) {
-        serviceService.updateService(providerId, service, picture);
-        return "redirect:/provider-homepage/" + providerId;
+    @PostMapping("/providers/update/{id}")
+    public Object updateService(@PathVariable Long id, ServiceEntity service,
+            @RequestParam(required = false) MultipartFile picture) {
+        serviceService.updateService(id, service, picture); 
+        Long providerId = service.getProvider().getProviderId();
+        return "redirect:/trotter";
     }
 
     /**

@@ -12,6 +12,7 @@ import java.nio.file.Path;
 import java.io.File;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
@@ -34,7 +35,10 @@ public class ProviderService {
     @Autowired
     private BookingService bookingService;
 
-   
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+  
 
     /**
      * Method to get all providers
@@ -93,7 +97,9 @@ public class ProviderService {
                 String fileExtension = originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
                 String fileName = String.valueOf(newProvider.getProviderId()) + "." + fileExtension;
                 Path filePath = Paths.get(UPLOAD_DIR + fileName);
+                
                 InputStream inputStream = profilePicture.getInputStream();
+                
                 Files.createDirectories(Paths.get(UPLOAD_DIR));
                 Files.copy(inputStream, filePath,
                         StandardCopyOption.REPLACE_EXISTING);
@@ -102,6 +108,8 @@ public class ProviderService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+            newProvider.setPassword(passwordEncoder.encode(provider.getPassword()));
+
         return providerRepository.save(newProvider);
     }
 
@@ -128,6 +136,7 @@ public class ProviderService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+            provider.setPassword(passwordEncoder.encode(provider.getPassword()));
         return providerRepository.save(provider);
     }
 
@@ -172,17 +181,25 @@ public class ProviderService {
             int bookingCount = 0;
             int repeatingServices = 0;
 
+            Map<Long, String> serviceNames = new HashMap<>();
+            Map<Long, Integer> repeatingServiceBookings = new HashMap<>();
+
             for (ServiceEntity service : services) {
-                int serviceBookingCount = bookingService.getBookingsByServiceId(service.getServiceId()).size();
-                bookingCount += serviceBookingCount;
-                if (serviceBookingCount > 1) {
+                int count = bookingService.getBookingsByServiceId(service.getServiceId()).size();
+                bookingCount += count;
+                if (count > 1) {
                     repeatingServices++;
+                    repeatingServiceBookings.put(service.getServiceId(), count);
+                    serviceNames.put(service.getServiceId(), service.getServiceName()); // assuming getName() method
+                                                                                        // exists
                 }
             }
 
             result.put("serviceCount", services.size());
             result.put("totalBookings", bookingCount);
             result.put("repeatingServices", repeatingServices);
+            result.put("repeatingServiceBookings", repeatingServiceBookings);
+            result.put("serviceNames", serviceNames);
             return result;
 
         } catch (Exception e) {

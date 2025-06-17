@@ -12,7 +12,7 @@
         crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-     <style>
+    <style>
         html {
             scroll-behavior: smooth;
         }
@@ -21,6 +21,7 @@
 </head>
 
 <body>
+
 
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(255, 123, 0);">
         <div class="container-fluid">
@@ -39,7 +40,7 @@
                             Service</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="provider-cust-stats.html">Statistics</a>
+                        <a class="nav-link" href="/providers/${providerId}/stats">Your Statistics</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact-us">Contact Us</a>
@@ -50,7 +51,8 @@
                             Account
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end"> <!-- Aligns dropdown to the right -->
-                            <li><a class="dropdown-item" href="/provider-homepage/${provider.providerId}/updateForm">My Profile</a></li>
+                            <li><a class="dropdown-item" href="/provider-homepage/${provider.providerId}/updateForm">My
+                                    Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -67,34 +69,36 @@
 
     <div id="Trotter" class="Home text-center" style="background-color: rgb(255, 123, 0);">
         <br><br><br>
-        <h1 style="font-size: 3rem; font-weight: bold; color: white;">Welcome To Trotter ${provider.firstName}!</h1>
+        <h1 style="font-size: 3rem; font-weight: bold; color: white;">
+            Welcome To Trotter ${provider.firstName}!
+        </h1>
         <h6 style="color: white;">Your journey as a provider starts here!</h6>
-        <div class="container mt-5 d-flex justify-content-center">
-        </div>
-        <div class="text-center">
-            <img src="../profile-pictures/homepage.jpg" class="img-fluid rounded-start" style="max-width: 20%;"
-                alt="Customer photo"> 
+
+        <div class="text-center mt-4">
+            <img src="/profile-pictures/${(provider.profilePicturePath)!'homepage.jpg'}" class="card-img-top"
+                style="height: 100px; width: 100px; border-radius: 50%; object-fit: cover;" alt="profile picture">
         </div>
 
         <br><br><br><br>
-
     </div><br><br>
 
-    <div class="d-flex justify-content-center">
-        <div class="card w-75 mb-3">
-            <div class="card-header">
-                Upcoming Appointments
+    <div class="container py-5">
+        <h2 class="mb-4 text-center">Customer Statistics</h2>
+        <!-- Stats Cards -->
+        <div class="row text-center mb-5">
+            <div class="col-md-3">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Services</h5>
+                        <h2>${serviceCount}</h2>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary"
-                    style="background-color: rgb(255, 123, 0); border-color: orange;">Message</a>
-                <a href="#" class="btn btn-primary"
-                    style="background-color: rgb(255, 123, 0); border-color: orange;">Reschedule</a>
-            </div>
+            ...
         </div>
     </div>
+
+
     <br>
     <br>
     <div class="d-flex justify-content-center">
@@ -129,10 +133,10 @@
                                     <h5 class="card-title">${service.serviceName}</h5>
                                     <p class="card-text">${service.description}</p>
                                     <a href="/provider-homepage/${provider.providerId}/services/${service.serviceId}"
-   class="btn btn-primary"
-   style="background-color: rgb(255, 123, 0); border-color: orange;">
-   View
-</a>
+                                        class="btn btn-primary"
+                                        style="background-color: rgb(255, 123, 0); border-color: orange;">
+                                        View
+                                    </a>
 
                                 </div>
                             </div>
