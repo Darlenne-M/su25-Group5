@@ -41,8 +41,7 @@
                             Account
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end"> <!-- Aligns dropdown to the right -->
-                            <li><a class="dropdown-item" href="/provider-homepage/${provider.providerId}/updateForm">My
-                                    Profile</a></li>
+                            <li><a class="dropdown-item" href="provider-profile.html">My Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
