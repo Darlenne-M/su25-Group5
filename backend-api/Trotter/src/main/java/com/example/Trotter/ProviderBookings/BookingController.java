@@ -1,6 +1,8 @@
 package com.example.Trotter.ProviderBookings;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Optional;
+
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,8 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BookingController {
     
-    @Autowired
-    private BookingService bookingService;
+    //@Autowired
+    private final BookingService bookingService;//*edit-ser 
+
+    //@Autowired
+    public BookingController(BookingService bookingService) {
+      this.bookingService = bookingService;
+    }
 
     /**
    * Endpoint to get all bookings
@@ -32,8 +39,8 @@ public class BookingController {
    * @return The booking with the specified ID
    */
     @GetMapping("/bookings/{id}")
-    public Booking getBookingById(@PathVariable Long id){
-        return bookingService.getBookingById(id);
+    public Optional<Booking> getBookingById(@PathVariable Long BookingId){
+        return bookingService.getBookingById(BookingId);
     }
 
     /**
@@ -42,9 +49,9 @@ public class BookingController {
    * @param providerId The ID of the provider to search for
    * @return List of bookings for the specified provider
    */
-    @GetMapping("/bookings/provider/{providerId}")
-    public Object getBookingsByProviderId(@PathVariable Long providerId){
-        return bookingService.getBookingsByProviderId(providerId);
+    @GetMapping("/bookings/customer/{customerId}")
+    public Object getBookingsByCustomerId(@PathVariable Long customerId){
+        return bookingService.getBookingsByCustomerId(customerId);
     }
 
       /**
@@ -75,7 +82,7 @@ public class BookingController {
    * @param id The ID of the booking to delete
    */
   @DeleteMapping("/bookings/{id}")
-  public void deleteBooking(@PathVariable Long id){
+  public void deleteBooking(@PathVariable Long id, @RequestBody Booking booking){
     bookingService.deleteBookingById(id);
   }
 
@@ -89,7 +96,7 @@ public class BookingController {
     @PutMapping("/bookings/{id}")
     public Object updateBooking(@PathVariable Long id, @RequestBody Booking booking){
         booking.setBookingId(id);// Ensure the ID is set for the update
-        return bookingService.updateBooking(booking);
+        return bookingService.updateBooking(booking, id);
     }
 
 

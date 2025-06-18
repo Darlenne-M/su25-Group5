@@ -11,10 +11,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "view_services_entities")
+//@Table(name = "view_services_entities")
 public class ViewServicesEntity {
     
     @Id

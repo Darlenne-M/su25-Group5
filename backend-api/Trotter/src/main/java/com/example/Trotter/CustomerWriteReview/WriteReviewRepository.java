@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-public interface WrtieReviewRepository extends JpaRepository<WriteReview, Long> {
+public interface WriteReviewRepository extends JpaRepository<WriteReview, Long> {
     @Query(value = "select * from reviews r where r.provider_id =?1", nativeQuery = true)
     List<WriteReview> getReviewsByProviderId(Long providerId);
 

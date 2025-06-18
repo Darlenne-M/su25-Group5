@@ -14,6 +14,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "providers")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})  //-serFixes no serializer found for class error
 public class Provider {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

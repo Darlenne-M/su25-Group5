@@ -48,21 +48,11 @@ public class CustomerController {
     public Object getCustomersByName(@RequestParam String key) {
         if (key != null) {
             return customerService.getCustomersByName(key);
-        } else {
+            } else {
             return customerService.getAllCustomers();
         }
     }
 
-    /**
-     * Endpoint to get providers by city
-     * 
-     * @param city The city to search for
-     * @return List of providers within city specified
-     */
-    @GetMapping("/providers/city/{city}")
-    public Object getProvidersByCity(@PathVariable String city) {
-        return customerService.getProvidersByCity(city);
-    }
     /**
      * Endpoint to add a new customer
      * 
@@ -80,10 +70,12 @@ public class CustomerController {
      * @param customer The customer to update
      * @return List of all customers
      */
-    @PutMapping("/customers")
-    public Object updateCustomer(@RequestBody Customer customer) {
-        return customerService.updateCustomer(customer);
+    @PutMapping("/customers/{customerId}")
+    public Object updateCustomer(@PathVariable Long customerId, @RequestBody Customer customer) {
+        customerService.updateCustomer(customer,customerId);
+        return customerService.getCustomerById(customerId);
     }
+
 
     /**
      * Endpoint to delete a customer by ID
@@ -93,18 +85,32 @@ public class CustomerController {
      */
     @DeleteMapping("/customers/{id}")
     public Object deleteCustomer(@PathVariable Long id) {
-        return customerService.deleteCustomer(id);
+        customerService.deleteCustomer(id);
+        return customerService.getAllCustomers();
     }
 
-    /**
-     * Endpoint to get statistics by customer ID
+    /**Endpoint to write a customer to JSON file
      * 
-     * @param customerId The Id of the customer to retrieve stats
-     * @return Stats for the specified customer
+     * @param customer The customer to write
+     * @ return An empty string indicating success
      */
-    @GetMapping("/customers/stats/{customerId}")
-    public Object getStatsByCustomerId(@PathVariable Long customerId) {
-        return customerService.getStatsByCustomerId(customerId);
-    }
 
+     @PostMapping("/customers/writeFile")
+     public Object writeJson(@RequestBody Customer customer) {
+        customerService.writeJson(customer);
+        return customerService.writeJson(customer);
+     }
+
+     /**
+      * Endpoint to read a JSON file and return its contents
+      *
+      *@return The contents of the JSON file
+      */
+
+      @PostMapping("customers/readFile")
+      public Object readJson() {
+          return customerService.readJson();
+      }
+
+     
 }   

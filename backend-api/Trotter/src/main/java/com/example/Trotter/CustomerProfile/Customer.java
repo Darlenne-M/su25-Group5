@@ -1,16 +1,14 @@
 package com.example.Trotter.CustomerProfile;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-
-import com.example.Trotter.CustomerViewServices.ViewServices;
+import com.example.Trotter.ProviderBookings.Booking;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,6 +17,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "customers")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})  //Fixes no serializer found for class error
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +34,9 @@ public class Customer {
     private String state;
     private String zip;
 
+    private String profilePicture;
+    private String role;
+
     @Column(nullable = false)
     private String phone;
 
@@ -45,16 +47,18 @@ public class Customer {
     private String password;
 
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("customer") //Circular reference handling
-    private Set<ViewServices> viewedServices = new HashSet<>();
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<Booking> booking = new ArrayList<>();
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})  //Fixes no serializer found for class error
    
     public Customer() {
 
     }
 
 
-    public Customer(Long customerId, String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password) {
+    public Customer(Long customerId, String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password,String profilePicture, String role, List<Booking> bookings) {
         this.customerId = customerId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -65,9 +69,12 @@ public class Customer {
         this.phone = phone;
         this.email =email;
         this.password = password;
+        this.profilePicture = profilePicture;
+        this.role = role;
+        this.booking = (bookings != null) ? bookings: new ArrayList<>();
     }
 
-    public Customer(String firstName, String lastName, String address, String city, String zip, String state, String phone, String email, String password) {
+    public Customer(String firstName, String lastName, String address, String city, String zip, String state, String phone, String email, String password, String profilePicture, String role, List<Booking> bookings) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -77,9 +84,12 @@ public class Customer {
         this.phone = phone;
         this.email = email;
         this.password = password;
+        this.profilePicture = profilePicture;
+        this.role = role;
+        this.booking = (bookings != null) ? bookings: new ArrayList<>();
     }
 
-    public Customer(Long customerId, String firstName, String lastName, String address, String city, String zip, String state, String phone, String email, String password,List<ViewServices> services) {
+    public Customer(Long customerId, String firstName, String lastName, String address, String city, String zip, String state, String phone, String email, String password, List<Booking> booking, String profilePicture, String role, List<Booking> bookings) {
         this.customerId = customerId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -90,18 +100,14 @@ public class Customer {
         this.phone = phone;
         this.email = email;
         this.password = password;
-           if(services != null) {
-            this.viewedServices = new HashSet<>(services);
-            for (ViewServices service: this.viewedServices) {
-                service.setCustomer(this);
-            }
-        }else {
-            this.viewedServices = new HashSet<>();
-        }
+        this.booking = booking;
+        this.profilePicture = profilePicture;
+        this.role = role;
+        this.booking = (bookings != null) ? bookings: new ArrayList<>();
     
     }
 
-    public Customer(String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password, List<ViewServices>services) {
+    public Customer(String firstName, String lastName, String address, String city, String state, String zip, String phone, String email, String password, List<Booking> booking, String profilePicture, String role, List<Booking> bookings) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -111,14 +117,10 @@ public class Customer {
         this.phone = phone;
         this.email = email;
         this.password = password;
-         if(services != null) {
-            this.viewedServices = new HashSet<>(services);
-            for (ViewServices service: this.viewedServices) {
-                service.setCustomer(this);
-            }
-        }else {
-            this.viewedServices = new HashSet<>();
-        }
+        this.booking = booking;
+        this.profilePicture = profilePicture;
+        this.role = role;
+        this.booking = (bookings != null) ? bookings: new ArrayList<>();
     }
 
     public Long getId() {
@@ -194,6 +196,7 @@ public class Customer {
     }
 
     public String getPasswordString() {
+        
         return password;
     }
 
@@ -201,20 +204,41 @@ public class Customer {
         this.password = password;
     }
 
-    public Set<ViewServices> getViewedServices() {
-        return viewedServices;
+    public List<Booking> getBookings() {
+        return booking;
     }
-     // Helper method to add a single ViewService to the collection and maintain bidirectional relationship
-    public void addViewedService(ViewServices service) {
-        this.viewedServices.add(service);
-        service.setCustomer(this); // Important: set the customer on the ViewServices side
+   
+    public void setBooking(List<Booking> bookings) {
+        this.booking.clear();
+        if(booking != null) {        //For collection setters, especially in JPA entities,
+                                     // it's generally better to clear and add, rather than reassigning the reference
+                                     // if you want JPA to track changes correctly for managed entities.
+        this.booking.addAll(bookings);
+        }
+
     }
 
-    // Helper method to remove a single ViewService from the collection
-    public void removeViewedService(ViewServices service) {
-        this.viewedServices.remove(service);
-        service.setCustomer(null); // Important: remove the customer from the ViewServices side
+    public void setRole(String role) {
+        this.role = role;
+    }    
+
+    public String getRole() {
+        return role;
     }
+
+    public String getprofilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
+    
+   // public void removeViewedService(ViewServices service) {
+   //     this.viewedServices.remove(service);
+       // service.setCustomer(null); // Important: remove the customer from the ViewServices side
+   // }
 
 }
 

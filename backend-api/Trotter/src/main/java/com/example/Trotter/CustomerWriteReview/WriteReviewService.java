@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class WrtieReviewService {
+public class WriteReviewService {
     
     public Object getAllReviews;
     @Autowired
-    private WrtieReviewRepository reviewRepository;
+    private WriteReviewRepository reviewRepository;
 
     /**
      * Mehtod to get all reviews

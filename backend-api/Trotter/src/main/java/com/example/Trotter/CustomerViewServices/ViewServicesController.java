@@ -1,9 +1,8 @@
 package com.example.Trotter.CustomerViewServices;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,20 +11,28 @@ import com.example.Trotter.ProviderServices.ServiceService;
 import jakarta.annotation.Generated;
 
 @RestController
+@RequestMapping("/customer/services")  //***Unique base path for customer views
 public class ViewServicesController {
-    @Autowired
-    private ServiceService serviceService;
+    private final ServiceService serviceService;
+
+    //@Autowired
+    public ViewServicesController(ServiceService serviceService) {
+        this.serviceService = serviceService;
+    }
+
+   // @Autowired
+   // private ServiceRepository serviceRepository;
 
     /**
      * Endpoint to get all services
      * 
      * @return List of all services
      */
-    @GetMapping("/services")
+    @GetMapping("/customer/services")
     public Object getAllServices() {
-        return serviceService.getAllServices();
+        return serviceService.getAllServices(); 
     }
-
+    
     /**
      * Endpoint to get service by ID
      * 
@@ -33,7 +40,7 @@ public class ViewServicesController {
      * @return The service with the specified ID
      */
     @GetMapping("/services/{serviceId}")
-    public com.example.Trotter.ProviderServices.ServiceEntity getServiceById(@PathVariable Long serviceId) {
+    public Object getServiceById(@PathVariable Long serviceId) {
         return serviceService.getServiceById(serviceId);
     }
 
@@ -50,29 +57,6 @@ public class ViewServicesController {
         }else {
             return serviceService.getAllServices();
         }
-    }
-
-    /**
-     * Endpoint to view services
-     * 
-     * return List of all services
-     */
-    @SuppressWarnings("null")
-    @PostMapping("/services")
-     public Object getAllCustomers() {
-        ViewServicesController customerService = null;
-        return customerService.getAllCustomers();
-    }
-
-    /**
-     * Endpoint to  get service by provider ID
-     * 
-     * @param providerId The ID of the provider to search
-     * @return List of services provided by the provider
-     */
-    @GetMapping("/services/provider/{providerId}")
-    public Object getServicesByProviderId(@PathVariable Long providerId) {
-        return serviceService.getServicesByProviderId(providerId);
     }
 
 }

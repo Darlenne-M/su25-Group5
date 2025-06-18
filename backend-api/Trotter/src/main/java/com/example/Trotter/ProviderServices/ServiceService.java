@@ -2,14 +2,18 @@ package com.example.Trotter.ProviderServices;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired; //*edit-ser
 import org.springframework.stereotype.Service;
 
 @Service
 public class ServiceService {
-    
-    @Autowired
-    private ServiceRepository serviceRepository;
+    private final ServiceRepository serviceRepository; //*edit- ser
+
+    //@Autowired  //*edit-ser 
+    public ServiceService(ServiceRepository serviceRepository) {  //*edit-ser 
+      this.serviceRepository = serviceRepository;
+    }
+    //private ServiceRepository serviceRepository;
 
      /**
    * Method to get all services
