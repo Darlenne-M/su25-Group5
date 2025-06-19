@@ -14,8 +14,13 @@ import com.example.Trotter.ProviderBookings.BookingService;
 
 @Service
 public class ProviderService {
-    @Autowired
-    private ProviderRepository providerRepository;
+    //@Autowired
+    private final ProviderRepository providerRepository;//*edit-ser */
+
+    //@Autowired
+    public ProviderService(ProviderRepository providerRepository) {
+      this.providerRepository = providerRepository;
+    }
 
     
     @Autowired

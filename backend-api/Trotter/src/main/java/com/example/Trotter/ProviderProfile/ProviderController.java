@@ -1,6 +1,6 @@
 package com.example.Trotter.ProviderProfile;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,9 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ProviderController {
-    
-    @Autowired
-    private ProviderService providerService;
+    //@Autowired
+    private final ProviderService providerService;//*edit-ser 
+
+    //@Autowired
+    public ProviderController(ProviderService providerService) {  //*edit-ser 
+        this.providerService = providerService;
+    }
+
      /**
    * Endpoint to get all providers
    *

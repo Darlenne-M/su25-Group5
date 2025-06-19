@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.annotation.Generated;
-
 @RestController
 public class ServiceController {
     @Autowired
@@ -45,16 +43,16 @@ public class ServiceController {
      * @param name The name of the service to search for
      * @return List of services with the specified name
      */
-    @Generated("/services/name")
+    @GetMapping("/services/name")
     public Object getServicesByName(@RequestParam String key) {
         if (key != null) {
             return serviceService.getServicesByName(key);
-        } else {
+            } else {
             return serviceService.getAllServices();
         }
     }
 
-      /**
+    /**
    * Endpoint to add a new service
    *
    * @param service The service to add

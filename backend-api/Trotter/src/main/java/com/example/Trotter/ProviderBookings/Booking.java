@@ -1,22 +1,24 @@
 package com.example.Trotter.ProviderBookings;
 
 import com.example.Trotter.ProviderServices.ServiceEntity;
-import com.example.Trotter.ProviderProfile.Provider;
-
+import com.example.Trotter.CustomerProfile.Customer;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "bookings")
@@ -26,34 +28,42 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingId;
 
-    @ManyToOne()
-    @JoinColumn(name = "provider_id", nullable = false)
-    @JsonIgnoreProperties("bookings")
-    private Provider provider;
+    @ManyToOne(fetch = FetchType.LAZY)  //Always use LAZY for ManyToOne unless truly needed EAGERLY-ser
+    @JoinColumn(name = "customer_id", nullable = false)
+    // @JsonIgnoreProperties("bookings")//-*ser 
+     @JsonIgnore    //This will completely hide the 'customer' object when serializing a Booking
+     private Customer customer;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)  //Always use LAZY for ManyToOne unless truly needed EAGERLY-ser
     @JoinColumn(name = "service_id", nullable = false)
     @JsonIgnoreProperties("provider")
     private ServiceEntity service;
+
+    //Transient field to accept customerId from JSON
+    @Transient // This tells JPA to ignore this field in the database mapping-ser
+    private Long customerId;
+
+    @Transient
+    private Long serviceId;     // Adding for serviceId too, for consistency of JSON deserilization -ser
 
     private LocalDate bookingDate;
     private LocalTime startTime;
     private LocalTime endTime;
 
     @Column(nullable = false)
-    private String status; // Example values: PENDING, CONFIRMED, COMPLETED, CANCELED
+    private String status; // Example values: PENDING, CONFIRMED, COMPLETED, CANCELED 
 
     private String notes;
 
     private LocalDateTime createdAt;
 
-    public Booking(){
+    public Booking() {
 
     }
 
-    public Booking(Long bookingId, Provider provider, ServiceEntity service, LocalDate bookingDate, LocalTime startTime, LocalTime endTime, String status, String notes, LocalDateTime createdAt){
+    public Booking(Long bookingId, Customer customer, ServiceEntity service, LocalDate bookingDate, LocalTime startTime, LocalTime endTime, String status, String notes, LocalDateTime createdAt){
         this.bookingId = bookingId;
-        this.provider = provider;
+        this.customer = customer;
         this.service = service;
         this.bookingDate = bookingDate;
         this.startTime = startTime;
@@ -62,8 +72,8 @@ public class Booking {
         this.notes = notes;
         this.createdAt = createdAt;
     }
-      public Booking(Provider provider, ServiceEntity service, LocalDate bookingDate, LocalTime startTime, LocalTime endTime, String status, String notes, LocalDateTime createdAt){
-        this.provider = provider;
+      public Booking(Customer customer, ServiceEntity service, LocalDate bookingDate, LocalTime startTime, LocalTime endTime, String status, String notes, LocalDateTime createdAt){
+        this.customer = customer;
         this.service = service;
         this.bookingDate = bookingDate;
         this.startTime = startTime;
@@ -73,19 +83,20 @@ public class Booking {
         this.createdAt = createdAt;
     }
 
-    public Long getBookingId(){
+    public Long getBookingId() {
         return bookingId;
     }
+
     public void setBookingId(Long bookingId){
         this.bookingId = bookingId;
     }
 
-    public Provider getProvider(){
-        return provider;
+    public Customer getCustomer(){
+        return customer;
     }
 
-    public void setProvider(Provider provider){
-        this.provider = provider;
+    public void setCustomer(Customer customer){
+        this.customer = customer;
     }
 
     public ServiceEntity getService(){
@@ -143,6 +154,22 @@ public class Booking {
 
     public void setCreatedAt(LocalDateTime createdAt){
         this.createdAt = createdAt;
+    }
+
+    public Long getCustomerId() {
+       return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
+    public Long getServiceId() {
+       return serviceId;
+    }
+
+    public void setServiceId(Long serviceId) {  
+        this.serviceId = serviceId;
     }
        
 
